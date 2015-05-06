@@ -3,6 +3,9 @@ apply plugin: 'jsonschema2pojo'
 
 version = '1.0'
 
+// jar name is required, because project name starts with ../ this causes the buildscript to fail
+archivesBaseName = 'fablab-common'
+
 buildscript {
     repositories {
         jcenter()
