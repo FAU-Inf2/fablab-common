@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'jsonschema2pojo'
 
 version = '1.0'
+def dropwizardVersion = '0.8.1'
 
 // jar name is required, because project name starts with ../ this causes the buildscript to fail
 archivesBaseName = 'fablab-common'
@@ -24,10 +25,11 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
     // jackson is required for the generated POJOs
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.2.+'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.2.+'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.+'
+    //compile 'com.fasterxml.jackson.core:jackson-databind:2.2.+'
+    //compile 'com.fasterxml.jackson.core:jackson-core:2.2.+'
+    //compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.+'
     compile 'commons-lang:commons-lang:2.6'
+    compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
 }
 
 // Each configuration is set to the default value
