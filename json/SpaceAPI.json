@@ -1,7 +1,7 @@
 {
   "description":"SpaceAPI 0.13",
   "type":"object",
-  "javaType":"net.spaceapi.SpaceAPI",
+  "javaType":"net.spaceapi.HackerSpace",
   "properties":{
     "api":{
       "description":"The version of SpaceAPI your endpoint uses",
