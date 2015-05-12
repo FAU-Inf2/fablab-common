@@ -111,7 +111,7 @@ jsonSchema2Pojo {
     removeOldOutput = false
 
     // The character encoding that should be used when writing the generated Java source files
-    outputEncoding = 'UTF-8'
+    outputEncoding = 'ASCII'
 
     // Whether to use {@link org.joda.time.DateTime} instead of {@link java.util.Date} when adding
     // date type fields to generated Java types.
