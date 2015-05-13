@@ -32,6 +32,11 @@ dependencies {
     compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
 }
 
+compileJava {
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
 sourceSets {
     main {
         java {
