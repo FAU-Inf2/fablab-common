@@ -10,7 +10,6 @@ import java.util.ArrayList;
 /**
  * Created by EE on 12.05.15.
  */
-
 @Entity
 @Table(name="cart")
 public class Cart implements Serializable {
@@ -61,8 +60,8 @@ public class Cart implements Serializable {
 
     public ArrayList<CartEntry> addProduct(Product product, double count){
         for(CartEntry e : products){
-            if(e.productId == product.getId()){
-                e.count += count;
+            if(e.getProductId() == product.getId()){
+                e.setCount(e.getCount() + count);
                 return products;
             }
         }
@@ -72,7 +71,7 @@ public class Cart implements Serializable {
 
     public ArrayList<CartEntry> removeProduct(Product product){
         for(CartEntry e : products){
-            if(e.productId == product.getId()){
+            if(e.getProductId() == product.getId()){
                 products.remove(e);
             }
         }

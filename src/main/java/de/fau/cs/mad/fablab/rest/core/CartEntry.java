@@ -13,10 +13,10 @@ import java.io.Serializable;
 public class CartEntry implements Serializable {
 
 
-    public long productId;
-    public String name;
-    public String description;
-    public double count;
+    private long productId;
+    private String name;
+    private String description;
+    private double count;
 
     public CartEntry(Product product, double count){
         this.productId = product.getId();
@@ -25,4 +25,35 @@ public class CartEntry implements Serializable {
         this.count = count;
     }
 
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getCount() {
+        return count;
+    }
+
+    public void setCount(double count) {
+        this.count = count;
+    }
 }
