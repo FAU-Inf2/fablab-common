@@ -12,34 +12,35 @@ import javax.persistence.*;
 @Table(name="product")
 public class Product {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "product_id")
+    protected long productId;       //TAKE / USE THE OPEN ERP PRODUCT ID!
 
     @Column(name = "name", nullable = false)
-    private String name;
+    protected String name;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "vendor")
-    private String vendor;
+    protected String vendor;
 
     @Column(name = "category_id")
-    private long categoryId;
+    protected long categoryId;
 
     @Column(name = "category_string")
-    private String categoryString;
+    protected String categoryString;
 
     @Column(name = "price")
-    private double price;
+    protected double price;
 
     @Column(name = "available")
-    private int itemsAvailable;
+    protected int itemsAvailable;
 
     public Product(){}
-    public Product(long id, String name, double price, long categoryId, String categoryString){
-        this.id = id;
+    public Product(long productId, String name, double price, long categoryId, String categoryString){
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
@@ -47,11 +48,11 @@ public class Product {
     }
 
     @JsonProperty
-    public long getId() {
-        return id;
+    public long getProductId() {
+        return productId;
     }
-    public void setId(long id) {
-        this.id = id;
+    public void setProductId(long id) {
+        this.productId = productId;
     }
 
     @JsonProperty

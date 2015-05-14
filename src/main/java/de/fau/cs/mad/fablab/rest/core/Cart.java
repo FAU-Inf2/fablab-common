@@ -57,11 +57,10 @@ public class Cart implements Serializable {
     }
 
 
-
     public ArrayList<CartEntry> addProduct(Product product, double count){
         for(CartEntry e : products){
-            if(e.getProductId() == product.getId()){
-                e.setCount(e.getCount() + count);
+            if(e.getProductId() == product.getProductId()){
+                e.setAmount(e.getAmount() + count);
                 return products;
             }
         }
@@ -71,11 +70,10 @@ public class Cart implements Serializable {
 
     public ArrayList<CartEntry> removeProduct(Product product){
         for(CartEntry e : products){
-            if(e.getProductId() == product.getId()){
+            if(e.getProductId() == product.getProductId()){
                 products.remove(e);
             }
         }
         return products;
     }
-
 }
