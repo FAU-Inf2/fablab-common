@@ -1,6 +1,5 @@
 package de.fau.cs.mad.fablab.rest.api;
 
-
 import de.fau.cs.mad.fablab.rest.core.Product;
 
 import javax.ws.rs.*;
@@ -15,10 +14,10 @@ import java.util.List;
 public interface ProductApi {
 
     @GET
-    @Path("/{id}")
+    @Path("/id/{id}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    Product findById(@PathParam("id") long id);
+    Product findById(@PathParam("id")long id);
 
 
     @GET
@@ -28,7 +27,7 @@ public interface ProductApi {
     List<Product> findByName(@PathParam("name") String name);
 
     @GET
-    @Path("/cat/{category}")
+    @Path("/category/{category}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     List<Product> findByCategory(@PathParam("category") String category);

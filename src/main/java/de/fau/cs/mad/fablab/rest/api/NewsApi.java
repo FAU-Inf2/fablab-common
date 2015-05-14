@@ -22,12 +22,13 @@ public interface NewsApi {
     News findById(@PathParam("id")long id);
 
     @GET
-    @Path("/{offset}/{limit}") //TODO --> change to news?offset=&limit=  --> HOW?
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<News> find(@PathParam("offset") int offset, @PathParam("limit")int limit);
+    // --> news?offset=10&limit=100
+    List<News> find(@QueryParam("offset") int offset,@QueryParam("limit") int limit);
 
     @GET
+    @Path("/all")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     List<News> findAll();
