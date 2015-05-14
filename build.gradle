@@ -30,6 +30,7 @@ dependencies {
     //compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.+'
     compile 'commons-lang:commons-lang:2.6'
     compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
+    compile 'io.dropwizard:dropwizard-hibernate:' + dropwizardVersion
 }
 
 compileJava {
