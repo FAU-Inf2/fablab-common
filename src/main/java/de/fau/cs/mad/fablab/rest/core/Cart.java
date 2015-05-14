@@ -27,7 +27,7 @@ public class Cart implements Serializable {
 
     public Cart(){
         status = CartStatusEnum.SHOPPING;
-        products = new ArrayList<>();
+        products = new ArrayList<CartEntry>();
     }
 
 

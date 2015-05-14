@@ -1,15 +1,39 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+
+import javax.persistence.*;
+
 
 /**
  * Created by EE on 12.05.15.
  */
 
-
+@Entity
+@Table(name="cartEntry")
 public class CartEntry extends Product implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long productId;
+
+    @Column(name = "amount")
     private double amount;
+
+    @Column(name = "categoryString")
+    private String categoryString;
+
+    @Column(name = "price")
+    private double price;
+
+    @Column(name = "categoryId")
+    private long categoryId;
+
+    @Column(name = "name")
+    private String name;
+
 
     public CartEntry(Product p, double amount){
         this.productId = p.getProductId();
@@ -21,6 +45,7 @@ public class CartEntry extends Product implements Serializable{
 
     }
 
+    @JsonProperty
     public double getAmount() {
         return amount;
     }
