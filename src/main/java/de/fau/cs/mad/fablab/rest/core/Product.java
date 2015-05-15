@@ -1,8 +1,9 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.io.Serializable;
 import javax.persistence.*;
+
 
 /**
  * This class represents a product, which is available in the Fablab
@@ -10,8 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="product")
-public class Product {
-
+public class Product implements Serializable{
+   
 
     @Id
     @Column(name = "product_id")
@@ -23,8 +24,8 @@ public class Product {
     @Column(name = "description")
     protected String description;
 
-    @Column(name = "vendor")
-    protected String vendor;
+    @Column(name = "unit")
+    protected String unit;
 
     @Column(name = "category_id")
     protected long categoryId;
@@ -39,12 +40,13 @@ public class Product {
     protected int itemsAvailable;
 
     public Product(){}
-    public Product(long productId, String name, double price, long categoryId, String categoryString){
+    public Product(long productId, String name, double price, long categoryId, String categoryString, String unit){
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
         this.categoryString = categoryString;
+	this.unit = unit;
     }
 
     @JsonProperty
@@ -69,6 +71,14 @@ public class Product {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @JsonProperty
+    public String getUnit() {
+	return unit;
+    }
+    public void setUnit(String unit){
+	this.unit = unit;
     }
 
     @JsonProperty
