@@ -24,8 +24,8 @@ public class CartEntry extends Product implements Serializable{
         this.price = p.getPrice();
         this.categoryId = p.getCategoryId();
         this.categoryString = p.getCategoryString();
+	this.unit = p.getUnit();
         this.amount = amount;
-
     }
 
 
