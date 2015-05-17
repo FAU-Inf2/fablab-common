@@ -54,7 +54,7 @@ public class Product implements Serializable{
         return productId;
     }
     public void setProductId(long id) {
-        this.productId = productId;
+        this.productId = id;
     }
 
     @JsonProperty
