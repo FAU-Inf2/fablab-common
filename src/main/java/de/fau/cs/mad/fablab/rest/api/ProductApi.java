@@ -6,10 +6,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-/**
- * Created by EE on 12.05.15.
- */
-
 @Path("products")
 public interface ProductApi {
 
@@ -17,14 +13,16 @@ public interface ProductApi {
     @Path("/id/{id}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    Product findById(@PathParam("id")long id);
+    Product findById(@PathParam("id") long id);
 
 
     @GET
     @Path("/name/{name}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByName(@PathParam("name") String name);
+    List<Product> findByName(@PathParam("name") String name,
+                             @PathParam("limit") int limit,
+                             @PathParam("offset") int offset);
 
     @GET
     @Path("/category/{category}")
@@ -35,6 +33,7 @@ public interface ProductApi {
     @GET
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findAll();
+    List<Product> findAll(@PathParam("limit") int limit,
+                          @PathParam("offset") int offset);
 
 }
