@@ -6,29 +6,29 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("products")
+@Path("/products")
 public interface ProductApi {
 
     @GET
-    @Path("/id/{id}")
+    @Path("/find/id")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    Product findById(@QueryParam("id") long id);
+    Product findById(@QueryParam("search") long id);
 
 
     @GET
-    @Path("/name/{name}")
+    @Path("/find/name")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByName(@QueryParam("name") String name,
+    List<Product> findByName(@QueryParam("search") String name,
                              @QueryParam("limit") int limit,
                              @QueryParam("offset") int offset);
 
     @GET
-    @Path("/category/{category}")
+    @Path("/find/category")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByCategory(@QueryParam("category") String category);
+    List<Product> findByCategory(@QueryParam("search") String category);
 
     @GET
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
