@@ -2,14 +2,11 @@ package de.fau.cs.mad.fablab.rest.api;
 
 import net.spaceapi.HackerSpace;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Interface for accessing (remote) SpaceAPI
+ * Interface for accessing oour local SpaceAPI representation
  * Information about SpaceAPI: https://spaceapi.net/
  */
 @Path("/spaceapi")
@@ -17,7 +14,11 @@ import javax.ws.rs.core.MediaType;
 public interface SpaceApi {
 
     @GET
-    @Path("{space}")
+    @Path("/spaces/{space}")
     @Produces(MediaType.APPLICATION_JSON)
     HackerSpace getSpace(@PathParam("space") String space);
+
+    @GET
+    @Path("/update")
+    String updateDoorState(@QueryParam("key") String key, @QueryParam("data") String data);
 }
