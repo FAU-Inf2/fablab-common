@@ -13,27 +13,27 @@ public interface ProductApi {
     @Path("/id/{id}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    Product findById(@PathParam("id") long id);
+    Product findById(@QueryParam("id") long id);
 
 
     @GET
     @Path("/name/{name}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByName(@PathParam("name") String name,
-                             @PathParam("limit") int limit,
-                             @PathParam("offset") int offset);
+    List<Product> findByName(@QueryParam("name") String name,
+                             @QueryParam("limit") int limit,
+                             @QueryParam("offset") int offset);
 
     @GET
     @Path("/category/{category}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByCategory(@PathParam("category") String category);
+    List<Product> findByCategory(@QueryParam("category") String category);
 
     @GET
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findAll(@PathParam("limit") int limit,
-                          @PathParam("offset") int offset);
+    List<Product> findAll(@QueryParam("limit") int limit,
+                          @QueryParam("offset") int offset);
 
 }
