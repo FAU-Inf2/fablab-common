@@ -1,7 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.fau.cs.mad.fablab.rest.core.CartStatusEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
