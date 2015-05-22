@@ -1,10 +1,11 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by EE on 11.05.15.
@@ -24,9 +25,11 @@ public class News implements Serializable {
     private String link;
 
     @Column(name = "description")
+    @Type(type="text")
     private String description;
 
     @Column(name = "descriptionShort")
+    @Type(type="text")
     private String descriptionShort;
 
     @Column(name = "category")
