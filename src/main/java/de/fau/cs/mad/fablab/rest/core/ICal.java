@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by EE on 11.05.15.
  *
 
-  EXAMPLE
+ EXAMPLE
 
  UID:calendar.484.field_datetime.4.1
  SUMMARY:StudentLab
@@ -51,8 +51,6 @@ public class ICal implements Serializable {
     @Column(name = "rrule")
     private String rrule;
 
-    @Column(name = "wkst")
-    private String wkst;
 
     @Column(name = "exdate")
     private String[] exdate;
@@ -71,14 +69,13 @@ public class ICal implements Serializable {
 
     public ICal(){}
 
-    public ICal(String uid, String summery, String dtstamp, String dtstart, String dtend, String rrule, String wkst, String[] exdate, String url, String location, String description){
+    public ICal(String uid, String summery, String dtstamp, String dtstart, String dtend, String rrule, String[] exdate, String url, String location, String description){
         this.uid = uid;
         this.summery = summery;
         this.dtstamp = dtstamp;
         this.dtstart = dtstart;
         this.dtend = dtend;
         this.rrule = rrule;
-        this.wkst = wkst;
         this.exdate = exdate;
         this.url = url;
         this.location = location;
@@ -137,13 +134,6 @@ public class ICal implements Serializable {
     public String getRrule() {  return rrule; }
     public void setRrule(String rrule) {this.rrule = rrule; }
 
-    @JsonProperty
-    public String getWkst() {
-        return wkst;
-    }
-    public void setWkst(String wkst) {
-        this.wkst = wkst;
-    }
 
     @JsonProperty
     public String[] getExdate() {
@@ -154,7 +144,7 @@ public class ICal implements Serializable {
     }
 
     @JsonProperty
-       public String getUrl() {
+    public String getUrl() {
         return url;
     }
     public void setUrl(String url) {
