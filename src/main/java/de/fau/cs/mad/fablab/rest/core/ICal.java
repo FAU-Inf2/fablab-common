@@ -66,6 +66,7 @@ public class ICal implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Transient
     private final SimpleDateFormat iCalDateToUtilDate=  new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
 
     public ICal(){}
