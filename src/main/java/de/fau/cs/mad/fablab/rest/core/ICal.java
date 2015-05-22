@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by EE on 11.05.15.
@@ -38,19 +40,22 @@ public class ICal implements Serializable {
     private String summery;
 
     @Column(name = "dtstamp", nullable = false)
-    private Date dtstamp;
+    private String dtstamp;
 
     @Column(name = "dtstart", nullable = false)
-    private Date dtstart;
+    private String dtstart;
 
     @Column(name = "dtend", nullable = false)
-    private Date dtend;
+    private String dtend;
 
     @Column(name = "rrule")
     private String rrule;
 
+    @Column(name = "wkst")
+    private String wkst;
+
     @Column(name = "exdate")
-    private Date[] exdate;
+    private String[] exdate;
 
     @Column(name = "url")
     private String url;
@@ -61,15 +66,18 @@ public class ICal implements Serializable {
     @Column(name = "description")
     private String description;
 
+    private final SimpleDateFormat iCalDateToUtilDate=  new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
+
     public ICal(){}
 
-    public ICal(String uid, String summery, Date dtstamp, Date dtstart, Date dtend, String rrule, Date[] exdate, String url, String location, String description){
+    public ICal(String uid, String summery, String dtstamp, String dtstart, String dtend, String rrule, String wkst, String[] exdate, String url, String location, String description){
         this.uid = uid;
         this.summery = summery;
         this.dtstamp = dtstamp;
         this.dtstart = dtstart;
         this.dtend = dtend;
         this.rrule = rrule;
+        this.wkst = wkst;
         this.exdate = exdate;
         this.url = url;
         this.location = location;
@@ -101,42 +109,46 @@ public class ICal implements Serializable {
     }
 
     @JsonProperty
-    public Date getDtstamp() {
+    public String getDtstamp() {
         return dtstamp;
     }
-    public void setDtstamp(Date dtstamp) {
+    public void setDtstamp(String dtstamp) {
         this.dtstamp = dtstamp;
     }
 
     @JsonProperty
-    public Date getDtstart() {
+    public String getDtstart() {
         return dtstart;
     }
-    public void setDtstart(Date dtstart) {
+    public void setDtstart(String dtstart) {
         this.dtstart = dtstart;
     }
 
     @JsonProperty
-    public Date getDtend() {
+    public String getDtend() {
         return dtend;
     }
-    public void setDtend(Date dtend) {
+    public void setDtend(String dtend) {
         this.dtend = dtend;
     }
 
     @JsonProperty
-    public String getRrule() {
-        return rrule;
+    public String getRrule() {  return rrule; }
+    public void setRrule(String rrule) {this.rrule = rrule; }
+
+    @JsonProperty
+    public String getWkst() {
+        return wkst;
     }
-    public void setRrule(String rrule) {
-        this.rrule = rrule;
+    public void setWkst(String wkst) {
+        this.wkst = wkst;
     }
 
     @JsonProperty
-    public Date[] getExdate() {
+    public String[] getExdate() {
         return exdate;
     }
-    public void setExdate(Date[] exdate) {
+    public void setExdate(String[] exdate) {
         this.exdate = exdate;
     }
 
@@ -162,6 +174,49 @@ public class ICal implements Serializable {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @JsonProperty
+    public Date getDtstampAsDate(){
+        try {
+            return new Date(iCalDateToUtilDate.parse(this.dtstamp).getTime());
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @JsonProperty
+    public Date getDtstartAsDate(){
+        try {
+            return new Date(iCalDateToUtilDate.parse(this.dtstart).getTime());
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @JsonProperty
+    public Date getDtendAsDate(){
+        try {
+            return new Date(iCalDateToUtilDate.parse(this.dtend).getTime());
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @JsonProperty
+    public Date[] getExDateAsDate(){
+        Date[] date = new Date[this.exdate.length];
+        for(int i = 0; i < this.exdate.length; i++){
+            try {
+                date[i] = new Date(iCalDateToUtilDate.parse(this.exdate[i]).getTime());
+            }catch (ParseException e){
+                e.printStackTrace();
+            }
+        }
+        return date;
     }
 
 }
