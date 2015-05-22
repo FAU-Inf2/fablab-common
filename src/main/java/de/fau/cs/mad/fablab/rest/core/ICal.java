@@ -167,6 +167,7 @@ public class ICal implements Serializable {
         this.description = description;
     }
 
+    @Transient
     @JsonProperty
     public Date getDtstampAsDate(){
         try {
@@ -177,6 +178,7 @@ public class ICal implements Serializable {
         return null;
     }
 
+    @Transient
     @JsonProperty
     public Date getDtstartAsDate(){
         try {
@@ -187,6 +189,7 @@ public class ICal implements Serializable {
         return null;
     }
 
+    @Transient
     @JsonProperty
     public Date getDtendAsDate(){
         try {
@@ -197,6 +200,7 @@ public class ICal implements Serializable {
         return null;
     }
 
+    @Transient
     @JsonProperty
     public Date[] getExDateAsDate(){
         Date[] date = new Date[this.exdate.length];
