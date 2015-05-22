@@ -28,7 +28,9 @@ public interface ProductApi {
     @Path("/find/category")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    List<Product> findByCategory(@QueryParam("search") String category);
+    List<Product> findByCategory(@QueryParam("search") String category,
+                                 @QueryParam("limit") int limit,
+                                 @QueryParam("offset") int offset);
 
     @GET
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
