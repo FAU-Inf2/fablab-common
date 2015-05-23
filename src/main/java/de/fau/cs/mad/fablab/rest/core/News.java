@@ -25,11 +25,11 @@ public class News implements Serializable {
     private String link;
 
     @Column(name = "description")
-    @Type(type="text")
+    @Lob
     private String description;
 
     @Column(name = "descriptionShort")
-    @Type(type="text")
+    @Lob
     private String descriptionShort;
 
     @Column(name = "category")

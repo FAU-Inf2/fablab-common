@@ -38,4 +38,10 @@ public interface ProductApi {
     List<Product> findAll(@QueryParam("limit") int limit,
                           @QueryParam("offset") int offset);
 
+    @GET
+    @Path("/names")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    List<String> findAllNames();
+
 }
