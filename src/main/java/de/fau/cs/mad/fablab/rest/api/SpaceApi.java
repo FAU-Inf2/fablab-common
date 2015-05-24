@@ -20,5 +20,5 @@ public interface SpaceApi {
 
     @GET
     @Path("/update")
-    String updateDoorState(@QueryParam("key") String key, @QueryParam("data") String data);
+    String updateDoorState(@QueryParam("hash") String hash, @QueryParam("data") String data);
 }
