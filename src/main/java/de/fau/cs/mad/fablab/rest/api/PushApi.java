@@ -13,7 +13,7 @@ public interface PushApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response addRegistrationId(@PathParam("regid") LongParam regId);
+    Response addRegistrationId(@PathParam("regid") String regId);
 
 }
 
