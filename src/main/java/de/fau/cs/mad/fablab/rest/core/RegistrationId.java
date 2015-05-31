@@ -16,9 +16,9 @@ public class RegistrationId implements Serializable{
     protected long registrationid_id;
 
     @Column(name = "registrationid", nullable = false)
-    protected long registrationid;
+    protected String registrationid;
 
-    public RegistrationId(long aRegistrationId){
+    public RegistrationId(String aRegistrationId){
         registrationid = aRegistrationId;
     }
 
@@ -27,8 +27,8 @@ public class RegistrationId implements Serializable{
     public long getRegistrationid_id() {return registrationid_id;}
 
     @JsonProperty
-    public long getRegistrationid() {return registrationid;}
-    public void setRegistrationid(long aRegistrationid) {registrationid = aRegistrationid;}
+    public String getRegistrationid() {return registrationid;}
+    public void setRegistrationid(String aRegistrationid) {registrationid = aRegistrationid;}
 
     @Override
     public String toString() {
