@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by EE on 12.05.15.
+ * This class represents a Cart included products
  */
 @Entity
 @Table(name="cart")
@@ -20,9 +21,8 @@ public class Cart implements Serializable {
     @Column(name = "status")
     private CartStatusEnum status;
 
-    @Column(name = "products")
-    private ArrayList<CartEntry> products;
-
+    @OneToMany(mappedBy = "cart")
+    private List<CartEntry> products;
 
     public Cart(){
         status = CartStatusEnum.SHOPPING;
@@ -47,29 +47,29 @@ public class Cart implements Serializable {
     }
 
     @JsonProperty
-    public ArrayList<CartEntry> getProducts(){
+    public List<CartEntry> getProducts(){
         return products;
     }
 
-    public void setProducts(ArrayList<CartEntry> products){
+    public void setProducts(List<CartEntry> products){
         this.products = products;
     }
 
 
-    public ArrayList<CartEntry> addProduct(Product product, double count){
+    public List<CartEntry> addProduct(Product product, double count){
         for(CartEntry e : products){
-            if(e.getProductId() == product.getProductId()){
+            if(e.getProduct().getProductId() == product.getProductId()){
                 e.setAmount(e.getAmount() + count);
                 return products;
             }
         }
-        products.add(new CartEntry(product,count));
+        products.add(new CartEntry(product, count));
         return products;
     }
 
-    public ArrayList<CartEntry> removeProduct(Product product){
+    public List<CartEntry> removeProduct(Product product){
         for(CartEntry e : products){
-            if(e.getProductId() == product.getProductId()){
+            if(e.getProduct().getProductId() == product.getProductId()){
                 products.remove(e);
             }
         }

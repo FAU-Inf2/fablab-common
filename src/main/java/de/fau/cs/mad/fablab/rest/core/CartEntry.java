@@ -1,16 +1,26 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by EE on 12.05.15.
+ * This class represents an entry in a shopping cart, specifying how many products are in a cart
  */
 
-@Entity(name = "cart")
-public class CartEntry extends Product implements Serializable{
+@Entity
+@Table(name = "cartEntry")
+public class CartEntry implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Cart cart;
+
+    @OneToOne
+    private Product product;
 
     @Column(name = "amount")
     private double amount;
@@ -19,15 +29,9 @@ public class CartEntry extends Product implements Serializable{
     public CartEntry(){}
 
     public CartEntry(Product p, double amount){
-        this.productId = p.getProductId();
-        this.name = p.getName();
-        this.price = p.getPrice();
-        this.categoryId = p.getCategoryId();
-        this.categoryString = p.getCategoryString();
-	this.unit = p.getUnit();
+        this.product = p;
         this.amount = amount;
     }
-
 
     public double getAmount() {
         return amount;
@@ -35,5 +39,13 @@ public class CartEntry extends Product implements Serializable{
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
