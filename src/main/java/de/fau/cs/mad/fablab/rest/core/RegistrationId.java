@@ -4,10 +4,12 @@ package de.fau.cs.mad.fablab.rest.core;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
 @Table(name="registrationid")
-public class RegistrationId {
+public class RegistrationId implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +29,9 @@ public class RegistrationId {
     @JsonProperty
     public long getRegistrationid() {return registrationid;}
     public void setRegistrationid(long aRegistrationid) {registrationid = aRegistrationid;}
+
+    @Override
+    public String toString() {
+        return "RegistrationId{" + "registrationid_id=" + registrationid_id + ", registrationid=" + registrationid + '}';
+    }
 }
