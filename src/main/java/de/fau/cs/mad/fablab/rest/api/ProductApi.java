@@ -13,7 +13,7 @@ public interface ProductApi {
     @Path("/find/id")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    Product findById(@QueryParam("search") long id);
+    Product findById(@QueryParam("search") String id);
 
 
     @GET

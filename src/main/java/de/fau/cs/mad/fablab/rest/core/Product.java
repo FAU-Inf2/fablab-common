@@ -16,7 +16,7 @@ public class Product implements Serializable{
 
     @Id
     @Column(name = "product_id")
-    protected long productId;       //TAKE / USE THE OPEN ERP PRODUCT ID!
+    protected String productId;       //TAKE / USE THE OPEN ERP PRODUCT ID!
 
     @Column(name = "name", nullable = false)
     protected String name;
@@ -40,7 +40,7 @@ public class Product implements Serializable{
     protected int itemsAvailable;
 
     public Product(){}
-    public Product(long productId, String name, double price, long categoryId, String categoryString, String unit){
+    public Product(String productId, String name, double price, long categoryId, String categoryString, String unit){
         this.productId = productId;
         this.name = name;
         this.price = price;
@@ -50,10 +50,10 @@ public class Product implements Serializable{
     }
 
     @JsonProperty
-    public long getProductId() {
+    public String getProductId() {
         return productId;
     }
-    public void setProductId(long id) {
+    public void setProductId(String id) {
         this.productId = id;
     }
 
