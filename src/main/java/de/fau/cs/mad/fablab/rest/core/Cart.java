@@ -37,7 +37,6 @@ public class Cart implements Serializable {
         pushId ="";
     }
 
-
     @JsonProperty
     public String getCartCode() {
         return cartCode;
@@ -62,7 +61,6 @@ public class Cart implements Serializable {
     public void setProducts(List<CartEntry> products){
         this.products = products;
     }
-
 
     public List<CartEntry> addProduct(Product product, double count){
         for(CartEntry e : products){
@@ -103,7 +101,7 @@ public class Cart implements Serializable {
     }
 
     @JsonIgnore
-    double getTotal() {
+    public double getTotal() {
         double total = 0;
         for (CartEntry e : products) {
             total += e.getTotal();
