@@ -1,6 +1,8 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -63,5 +65,10 @@ public class CartEntry implements Serializable{
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @JsonIgnore
+    public double getTotal() {
+        return amount * product.getPrice();
     }
 }

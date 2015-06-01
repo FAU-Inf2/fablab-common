@@ -1,11 +1,12 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a Cart included products
@@ -30,7 +31,7 @@ public class Cart implements Serializable {
     @Column(name = "paidTimestamp")
     private long paidTimestamp;
 
-    public Cart(){
+    public Cart() {
         status = CartStatusEnum.SHOPPING;
         products = new ArrayList<>();
         pushId ="";
@@ -99,6 +100,15 @@ public class Cart implements Serializable {
 
     public void setPaidTimestamp(long paidTimestamp) {
         this.paidTimestamp = paidTimestamp;
+    }
+
+    @JsonIgnore
+    double getTotal() {
+        double total = 0;
+        for (CartEntry e : products) {
+            total += e.getTotal();
+        }
+        return total;
     }
 }
 
