@@ -23,7 +23,7 @@ public interface CartApi {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CartStatusEnum getStatus(long id);
+    CartStatusEnum getStatus(String id);
 
 
 }

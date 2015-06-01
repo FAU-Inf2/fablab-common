@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a Cart included products
@@ -16,7 +17,7 @@ public class Cart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String id;
 
     @Column(name = "status")
     private CartStatusEnum status;
@@ -38,10 +39,10 @@ public class Cart implements Serializable {
 
 
     @JsonProperty
-    public long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
