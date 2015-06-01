@@ -6,7 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Interface for accessing oour local SpaceAPI representation
+ * Interface for accessing our local SpaceAPI representation
  * Information about SpaceAPI: https://spaceapi.net/
  */
 @Path("/spaceapi")

@@ -8,7 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Created by EE on 12.05.15.
+ * API to upload/create shopping carts and to get status information
  */
 
 @Path("carts")
@@ -18,11 +18,10 @@ public interface CartApi {
     @Consumes(MediaType.APPLICATION_JSON)
     void create(Cart obj);
 
-
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    CartStatusEnum getStatus(String id);
+    CartStatusEnum getStatus(@PathParam("id") String id);
 
 
 }
