@@ -15,14 +15,9 @@ import java.util.ArrayList;
 @Table(name="cart")
 public class Cart implements Serializable {
 
-    @JsonIgnore
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private long id;
-
-    @Column(name= "cart_code")
-    private String cart_code;
+    @Column(name= "cartCode")
+    private String cartCode;
 
     @Column(name = "status")
     private CartStatusEnum status;
@@ -45,10 +40,10 @@ public class Cart implements Serializable {
 
     @JsonProperty
     public String getCartCode() {
-        return cart_code;
+        return cartCode;
     }
     public void setCartCode(String cart_code) {
-        this.cart_code = cart_code;
+        this.cartCode = cart_code;
     }
 
     @JsonProperty

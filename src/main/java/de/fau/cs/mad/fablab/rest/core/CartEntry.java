@@ -33,6 +33,22 @@ public class CartEntry implements Serializable{
         this.amount = amount;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public double getAmount() {
         return amount;
     }
