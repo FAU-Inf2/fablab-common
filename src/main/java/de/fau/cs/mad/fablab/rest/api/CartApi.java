@@ -16,7 +16,6 @@ public interface CartApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     void create(Cart obj);
 
 
