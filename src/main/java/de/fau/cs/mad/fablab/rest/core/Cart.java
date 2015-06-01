@@ -23,10 +23,16 @@ public class Cart implements Serializable {
     @Column(name = "products")
     private ArrayList<CartEntry> products;
 
+    @Column(name = "push_id")
+    private String pushId;
+
+    @Column(name = "paidTimestamp")
+    private long paidTimestamp;
 
     public Cart(){
         status = CartStatusEnum.SHOPPING;
         products = new ArrayList<>();
+        String pushId ="";
     }
 
 
@@ -74,6 +80,24 @@ public class Cart implements Serializable {
             }
         }
         return products;
+    }
+
+    @JsonProperty
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
+
+    @JsonProperty
+    public long getPaidTimestamp() {
+        return paidTimestamp;
+    }
+
+    public void setPaidTimestamp(long paidTimestamp) {
+        this.paidTimestamp = paidTimestamp;
     }
 }
 

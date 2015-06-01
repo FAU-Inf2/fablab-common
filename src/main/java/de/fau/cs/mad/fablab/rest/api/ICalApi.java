@@ -11,7 +11,7 @@ import java.util.List;
  * Created by EE on 12.05.15.
  */
 
-
+@Path("ical")
 public interface ICalApi {
 
     @GET
