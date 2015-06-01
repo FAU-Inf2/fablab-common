@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class Cart implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @Column(name = "status")
