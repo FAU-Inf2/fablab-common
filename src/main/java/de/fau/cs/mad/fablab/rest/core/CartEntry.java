@@ -1,8 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -21,7 +19,7 @@ public class CartEntry implements Serializable{
     @ManyToOne(fetch=FetchType.LAZY)
     private Cart cart;
 
-    @OneToOne
+    @ManyToOne
     private Product product;
 
     @Column(name = "amount")
@@ -67,7 +65,7 @@ public class CartEntry implements Serializable{
         this.product = product;
     }
 
-    @JsonIgnore
+
     public double getTotal() {
         return amount * product.getPrice();
     }
