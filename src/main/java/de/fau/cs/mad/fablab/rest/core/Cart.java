@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -14,8 +15,14 @@ import java.util.ArrayList;
 @Table(name="cart")
 public class Cart implements Serializable {
 
+    @JsonIgnore
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private long id;
+
+    @Column(name= "cart_code")
+    private String cart_code;
 
     @Column(name = "status")
     private CartStatusEnum status;
@@ -37,11 +44,11 @@ public class Cart implements Serializable {
 
 
     @JsonProperty
-    public String getId() {
-        return id;
+    public String getCartCode() {
+        return cart_code;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setCartCode(String cart_code) {
+        this.cart_code = cart_code;
     }
 
     @JsonProperty
