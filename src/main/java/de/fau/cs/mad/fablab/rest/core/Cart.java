@@ -1,6 +1,5 @@
 package de.fau.cs.mad.fablab.rest.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -34,7 +33,7 @@ public class Cart implements Serializable {
     public Cart(){
         status = CartStatusEnum.SHOPPING;
         products = new ArrayList<>();
-        String pushId ="";
+        pushId ="";
     }
 
 
