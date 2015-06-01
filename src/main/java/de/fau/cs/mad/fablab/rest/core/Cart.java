@@ -16,7 +16,7 @@ import java.util.List;
 public class Cart implements Serializable {
 
     @Id
-    @Column(name= "cartCode")
+    @Column(name= "cart_code")
     private String cartCode;
 
     @Column(name = "status")
