@@ -11,6 +11,9 @@ import java.io.Serializable;
 @Table(name="registrationid")
 public class RegistrationId implements Serializable{
 
+    public RegistrationId(){
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long registrationid_id;
