@@ -15,9 +15,16 @@ import java.util.List;
 public interface ICalApi {
 
     @GET
+    @Path("/all")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     List<ICal> findAll();
+
+    @GET
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+        // --> ical?offset=10&limit=100
+    List<ICal> find(@QueryParam("offset") int offset,@QueryParam("limit") int limit);
 
     @GET
     @Path("/{id}")
