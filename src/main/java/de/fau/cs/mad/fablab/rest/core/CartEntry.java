@@ -3,6 +3,7 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import com.j256.ormlite.field.DatabaseField;
 
 /**
  * This class represents an entry in a shopping cart, specifying how many products are in a cart
@@ -16,10 +17,14 @@ public class CartEntry implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    //@ManyToOne(fetch=FetchType.LAZY)
+    //private Cart cart;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "cart_id")
     private Cart cart;
 
-    @ManyToOne
+    //@ManyToOne
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "product_id", canBeNull = false)
     private Product product;
 
     @Column(name = "amount")
@@ -69,4 +74,5 @@ public class CartEntry implements Serializable{
     public double getTotal() {
         return amount * product.getPrice();
     }
+
 }

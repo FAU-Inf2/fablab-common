@@ -7,6 +7,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.ForeignCollectionField;
+
 
 /**
  * This class represents a Cart included products
@@ -22,8 +25,9 @@ public class Cart implements Serializable {
     @Column(name = "status")
     private CartStatusEnum status;
 
-    @OneToMany(mappedBy = "cart")
-    private List<CartEntry> products;
+    //@OneToMany(mappedBy = "cart")
+    @ForeignCollectionField
+    private ForeignCollection<CartEntry> products;
 
     @Column(name = "push_id")
     private String pushId;
@@ -33,7 +37,7 @@ public class Cart implements Serializable {
 
     public Cart() {
         status = CartStatusEnum.SHOPPING;
-        products = new ArrayList<>();
+        //products = new ArrayList<>();
         pushId ="";
     }
 
@@ -54,15 +58,15 @@ public class Cart implements Serializable {
     }
 
     @JsonProperty
-    public List<CartEntry> getProducts(){
+    public ForeignCollection<CartEntry> getProducts(){
         return products;
     }
 
-    public void setProducts(List<CartEntry> products){
+    public void setProducts(ForeignCollection<CartEntry> products){
         this.products = products;
     }
 
-    public List<CartEntry> addProduct(Product product, double count){
+    public ForeignCollection<CartEntry> addProduct(Product product, double count){
         for(CartEntry e : products){
             if(e.getProduct().getProductId() == product.getProductId()){
                 e.setAmount(e.getAmount() + count);
@@ -73,7 +77,7 @@ public class Cart implements Serializable {
         return products;
     }
 
-    public List<CartEntry> removeProduct(Product product){
+    public ForeignCollection<CartEntry> removeProduct(Product product){
         for(CartEntry e : products){
             if(e.getProduct().getProductId() == product.getProductId()){
                 products.remove(e);
