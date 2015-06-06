@@ -26,6 +26,7 @@ public class Cart implements Serializable {
     private CartStatusEnum status;
 
     //@OneToMany(mappedBy = "cart")
+    @Transient
     @ForeignCollectionField
     private ForeignCollection<CartEntry> products;
 
