@@ -2,10 +2,7 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -17,8 +14,11 @@ import java.io.Serializable;
 @Table(name = "product")
 public class Product implements Serializable {
 
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+
     @Column(name = "product_id")
     protected String productId;
 
@@ -59,6 +59,15 @@ public class Product implements Serializable {
         this.location = location;
     }
 
+    @JsonProperty
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     @JsonProperty
     public String getProductId() {
         return productId;

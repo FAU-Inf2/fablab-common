@@ -24,7 +24,7 @@ public class CartEntry implements Serializable{
     private Cart cart;
 
     //@ManyToOne
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "product_id", canBeNull = false)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true, columnName = "product_ref", canBeNull = false)
     private Product product;
 
     @Column(name = "amount")
