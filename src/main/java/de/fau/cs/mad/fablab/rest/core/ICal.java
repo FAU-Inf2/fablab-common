@@ -9,18 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by EE on 11.05.15.
  *
-
- EXAMPLE
+ Example:
 
  UID:calendar.484.field_datetime.4.1
  SUMMARY:StudentLab
- DTSTAMP:20150511T123540Z
- DTSTART:20140512T141500Z
- DTEND:20140512T154500Z
- RRULE:FREQ=WEEKLY;INTERVAL=1;UNTIL=20140707T215959Z;WKST=MO
- EXDATE:20140413T220000Z,20140414T220000Z,20140527T220000Z,20140529T220000Z,20140607T220000Z
+ START:20140512T141500Z
+ END:20140512T154500Z
  URL;VALUE=URI:https://fablab.fau.de/termine/2014-04-14-studentlab
  LOCATION:FabLab
  DESCRIPTION:Betreuer: Basti\, Julian\, Lukas
@@ -39,21 +34,11 @@ public class ICal implements Serializable {
     @Column(name = "summery", nullable = false)
     private String summery;
 
-    @Column(name = "dtstamp", nullable = false)
-    private String dtstamp;
+    @Column(name = "start", nullable = false)
+    private String start;
 
-    @Column(name = "dtstart", nullable = false)
-    private String dtstart;
-
-    @Column(name = "dtend", nullable = false)
-    private String dtend;
-
-    @Column(name = "rrule")
-    private String rrule;
-
-
-    @Column(name = "exdate")
-    private String[] exdate;
+    @Column(name = "end", nullable = false)
+    private String end;
 
     @Column(name = "url")
     private String url;
@@ -69,14 +54,11 @@ public class ICal implements Serializable {
 
     public ICal(){}
 
-    public ICal(String uid, String summery, String dtstamp, String dtstart, String dtend, String rrule, String[] exdate, String url, String location, String description){
+    public ICal(String uid, String summery, String start, String end, String url, String location, String description) {
         this.uid = uid;
         this.summery = summery;
-        this.dtstamp = dtstamp;
-        this.dtstart = dtstart;
-        this.dtend = dtend;
-        this.rrule = rrule;
-        this.exdate = exdate;
+        this.start = start;
+        this.end = end;
         this.url = url;
         this.location = location;
         this.description = description;
@@ -107,43 +89,6 @@ public class ICal implements Serializable {
     }
 
     @JsonProperty
-    public String getDtstamp() {
-        return dtstamp;
-    }
-    public void setDtstamp(String dtstamp) {
-        this.dtstamp = dtstamp;
-    }
-
-    @JsonProperty
-    public String getDtstart() {
-        return dtstart;
-    }
-    public void setDtstart(String dtstart) {
-        this.dtstart = dtstart;
-    }
-
-    @JsonProperty
-    public String getDtend() {
-        return dtend;
-    }
-    public void setDtend(String dtend) {
-        this.dtend = dtend;
-    }
-
-    @JsonProperty
-    public String getRrule() {  return rrule; }
-    public void setRrule(String rrule) {this.rrule = rrule; }
-
-
-    @JsonProperty
-    public String[] getExdate() {
-        return exdate;
-    }
-    public void setExdate(String[] exdate) {
-        this.exdate = exdate;
-    }
-
-    @JsonProperty
     public String getUrl() {
         return url;
     }
@@ -167,22 +112,34 @@ public class ICal implements Serializable {
         this.description = description;
     }
 
-    @Transient
-    @JsonProperty
-    public Date getDtstampAsDate(){
-        try {
-            return new Date(iCalDateToUtilDate.parse(this.dtstamp).getTime());
-        }catch (ParseException e){
-            e.printStackTrace();
-        }
-        return null;
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     @Transient
     @JsonProperty
     public Date getDtstartAsDate(){
+        return getStartAsDate();
+    }
+
+    @Transient
+    @JsonProperty
+    public Date getStartAsDate(){
         try {
-            return new Date(iCalDateToUtilDate.parse(this.dtstart).getTime());
+            return new Date(iCalDateToUtilDate.parse(this.start).getTime());
         }catch (ParseException e){
             e.printStackTrace();
         }
@@ -191,27 +148,13 @@ public class ICal implements Serializable {
 
     @Transient
     @JsonProperty
-    public Date getDtendAsDate(){
+    public Date getEndAsDate(){
         try {
-            return new Date(iCalDateToUtilDate.parse(this.dtend).getTime());
+            return new Date(iCalDateToUtilDate.parse(this.end).getTime());
         }catch (ParseException e){
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Transient
-    @JsonProperty
-    public Date[] getExDateAsDate(){
-        Date[] date = new Date[this.exdate.length];
-        for(int i = 0; i < this.exdate.length; i++){
-            try {
-                date[i] = new Date(iCalDateToUtilDate.parse(this.exdate[i]).getTime());
-            }catch (ParseException e){
-                e.printStackTrace();
-            }
-        }
-        return date;
     }
 
 }
