@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="cart_server")
+@Table(name="CartServer")
 public class CartServer implements Serializable {
 
     @Id

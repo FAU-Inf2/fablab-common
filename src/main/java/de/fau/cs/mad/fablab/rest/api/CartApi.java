@@ -2,6 +2,7 @@ package de.fau.cs.mad.fablab.rest.api;
 
 
 import de.fau.cs.mad.fablab.rest.core.Cart;
+import de.fau.cs.mad.fablab.rest.core.CartServer;
 import de.fau.cs.mad.fablab.rest.core.CartStatusEnum;
 
 import javax.ws.rs.*;
@@ -16,7 +17,7 @@ public interface CartApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    void create(Cart obj);
+    void create(CartServer obj);
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
