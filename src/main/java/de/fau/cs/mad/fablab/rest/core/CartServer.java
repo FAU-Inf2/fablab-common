@@ -12,7 +12,7 @@ public class CartServer implements Serializable {
     @Column(name = "cartCode")
     private String cartCode;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="cart")
+    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy="cart")
     private List<CartEntryServer> items;
 
     @Column(name = "status")
