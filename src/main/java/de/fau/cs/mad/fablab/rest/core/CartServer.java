@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="CartServer")
+@Table(name="cartServer")
 public class CartServer implements Serializable {
 
     @Id
-    @Column(name = "cart_id")
+    @Column(name = "cartCode")
     private String cartCode;
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="cart")
     private List<CartEntryServer> items;
 
     @Column(name = "status")

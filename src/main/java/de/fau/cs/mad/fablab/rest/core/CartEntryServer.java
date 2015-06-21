@@ -1,24 +1,27 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cart_entry_server")
+@Table(name = "cartEntryServer")
 public class CartEntryServer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_entry_id")
+    @Column(name = "dbId")
     private long id;
 
-    @Column(name = "product")
+    @Column(name = "productId")
     protected String productId;
 
     @Column(name = "amount")
     private double amount;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="cart_id")
+    @JoinColumn(name="cartCode", nullable = false)
     private CartServer cart;
 
     public CartEntryServer() {}

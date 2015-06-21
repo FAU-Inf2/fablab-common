@@ -22,6 +22,7 @@ public interface CartApi {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/status/{id}")
     CartStatusEnum getStatus(@PathParam("id") String id);
 
 
