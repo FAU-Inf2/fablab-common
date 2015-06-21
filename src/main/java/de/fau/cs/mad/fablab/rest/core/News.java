@@ -7,10 +7,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by EE on 11.05.15.
- */
-
 @Entity
 @Table(name="news")
 public class News implements Serializable {
@@ -25,11 +21,9 @@ public class News implements Serializable {
     private String link;
 
     @Column(name = "description")
-    @Lob
     private String description;
 
     @Column(name = "descriptionShort")
-    @Lob
     private String descriptionShort;
 
     @Column(name = "category")
@@ -91,7 +85,7 @@ public class News implements Serializable {
         return description;
     }
     public void setDescription(String description) {
-        this.description = description;
+        this.description = "";
     }
 
     @JsonProperty
