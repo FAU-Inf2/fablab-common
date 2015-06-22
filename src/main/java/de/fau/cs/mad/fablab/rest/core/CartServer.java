@@ -1,5 +1,7 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +22,11 @@ public class CartServer implements Serializable {
 
     @Column(name = "push_id")
     private String pushId;
+
+    //Only used to remove old carts (on server)
+    @JsonIgnore
+    @Column(name = "sentToServer")
+    private long sentToServer;
 
     public CartServer() {}
 
@@ -60,5 +67,13 @@ public class CartServer implements Serializable {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public long getSentToServer() {
+        return sentToServer;
+    }
+
+    public void setSentToServer() {
+        this.sentToServer = System.currentTimeMillis();
     }
 }
