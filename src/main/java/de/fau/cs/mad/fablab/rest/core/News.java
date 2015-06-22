@@ -85,7 +85,7 @@ public class News implements Serializable {
         return description;
     }
     public void setDescription(String description) {
-        this.description = "";
+        this.description = description;
     }
 
     @JsonProperty
