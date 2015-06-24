@@ -24,7 +24,6 @@ public class CartServer implements Serializable {
     private String pushId;
 
     //Only used to remove old carts (on server)
-    @JsonIgnore
     @Column(name = "sentToServer")
     private long sentToServer;
 
