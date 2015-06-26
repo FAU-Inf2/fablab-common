@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,50 +23,47 @@ public class Category implements Serializable {
     @Column(name = "category_name")
     protected String name;
 
+    @Column(name = "category_location")
+    protected String location;
+
+
     protected List<Category> categories;
 
     public Category(){
         // Default
     }
 
-    public Category(long aCategoryId, String aCategoryName){
+    public Category(long aCategoryId, String aCategoryName, String aLocation){
         categoryId = aCategoryId;
         name = aCategoryName;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        location = aLocation;
+        categories = new ArrayList<>();
     }
 
     @JsonProperty
-    public long getId() {
-        return id;
-    }
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
-    public void setCategoryId(long categoryId) {
-        this.categoryId = categoryId;
-    }
+    @JsonProperty
+    public String getLocation() {return location;}
+    public void setLocation(String location) {this.location = location;}
 
     @JsonProperty
     public long getCategoryId() {
         return categoryId;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setCategoryId(long categoryId) {this.categoryId = categoryId;}
 
     @JsonProperty
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @JsonProperty
-    public List<Category> getCategories() {
-        return categories;
-    }
+    public List<Category> getCategories() {return categories;}
+    public void setCategories(List<Category> categories) {this.categories = categories;}
 
-    public void addCategory(Category category){
-        categories.add(category);
-    }
 }

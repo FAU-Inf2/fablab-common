@@ -46,6 +46,8 @@ public class Product implements Serializable {
     @Column(name = "location")
     protected String location;
 
+    protected Category mCategory;
+
     public Product() {
     }
 
@@ -57,6 +59,16 @@ public class Product implements Serializable {
         this.categoryString = categoryString;
         this.unit = unit;
         this.location = location;
+        mCategory = new Category();
+    }
+
+    public void setCategory(Category aCategory) {
+        mCategory = aCategory;
+    }
+
+    @JsonProperty
+    public Category getCategory() {
+        return mCategory;
     }
 
     @JsonProperty
