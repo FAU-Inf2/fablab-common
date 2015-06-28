@@ -1,116 +1,86 @@
 package de.fau.cs.mad.fablab.rest.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
+
 import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
  * This class represents a Cart included products
  */
 @Entity
-@Table(name="cart")
+@Table(name = "cart")
 public class Cart implements Serializable {
 
     @Id
-    @Column(name= "cart_code")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "cart_code")
     private String cartCode;
 
-    @Column(name = "status")
-    private CartStatusEnum status;
+    @DatabaseField(canBeNull = false)
+    private CartStatus status;
 
-    //@OneToMany(mappedBy = "cart")
-    // I'm not sure if @Transient is wanted
-    @Transient
     @ForeignCollectionField
-    private ForeignCollection<CartEntry> products;
-
-    @Column(name = "push_id")
-    private String pushId;
-
-    @Column(name = "paidTimestamp")
-    private long paidTimestamp;
+    private ForeignCollection<CartEntry> entries;
 
     public Cart() {
-        status = CartStatusEnum.SHOPPING;
-        //products = new ArrayList<>();
-        pushId ="";
+        status = CartStatus.SHOPPING;
     }
 
-    @JsonProperty
     public String getCartCode() {
         return cartCode;
     }
-    public void setCartCode(String cart_code) {
-        this.cartCode = cart_code;
+
+    public void setCartCode(String cartCode) {
+        this.cartCode = cartCode;
     }
 
-    @JsonProperty
-    public CartStatusEnum getStatus() {
+    public CartStatus getStatus() {
         return status;
     }
-    public void setStatus(CartStatusEnum status) {
+
+    public void setStatus(CartStatus status) {
         this.status = status;
     }
 
-    @JsonProperty
-    public ForeignCollection<CartEntry> getProducts(){
-        return products;
+    public ForeignCollection<CartEntry> getEntries() {
+        return entries;
     }
 
-    public void setProducts(ForeignCollection<CartEntry> products){
-        this.products = products;
+    public CartEntry addEntry(Product product, double amount) {
+        CartEntry newEntry = new CartEntry(product, amount);
+        entries.add(newEntry);
+        return newEntry;
     }
 
-    public ForeignCollection<CartEntry> addProduct(Product product, double count){
-        for(CartEntry e : products){
-            if(e.getProduct().getProductId() == product.getProductId()){
-                e.setAmount(e.getAmount() + count);
-                return products;
-            }
+    public void removeEntry(CartEntry entry) {
+        entries.remove(entry);
+    }
+
+    public void updateEntry(CartEntry entry) {
+        try {
+            entries.update(entry);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        products.add(new CartEntry(product, count));
-        return products;
     }
 
-    public ForeignCollection<CartEntry> removeProduct(Product product){
-        for(CartEntry e : products){
-            if(e.getProduct().getProductId() == product.getProductId()){
-                products.remove(e);
-            }
-        }
-        return products;
-    }
-
-    @JsonProperty
-    public String getPushId() {
-        return pushId;
-    }
-
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
-    }
-
-    @JsonProperty
-    public long getPaidTimestamp() {
-        return paidTimestamp;
-    }
-
-    public void setPaidTimestamp(long paidTimestamp) {
-        this.paidTimestamp = paidTimestamp;
-    }
-
-    @JsonIgnore
-    public double getTotal() {
-        double total = 0;
-        for (CartEntry e : products) {
-            total += e.getTotal();
+    public double getTotalPrice() {
+        double total = 0.0;
+        for (CartEntry e : entries) {
+            total += e.getTotalPrice();
         }
         return total;
     }
