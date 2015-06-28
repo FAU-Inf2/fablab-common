@@ -26,6 +26,9 @@ public class Category implements Serializable {
     @Column(name = "category_location")
     protected String location;
 
+    @Column(name = "location_code")
+    protected String location_code;
+
 
     protected List<Category> categories;
 
@@ -49,15 +52,11 @@ public class Category implements Serializable {
     public void setLocation(String location) {this.location = location;}
 
     @JsonProperty
-    public long getCategoryId() {
-        return categoryId;
-    }
+    public long getCategoryId() {return categoryId;}
     public void setCategoryId(long categoryId) {this.categoryId = categoryId;}
 
     @JsonProperty
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
     public void setName(String name) {
         this.name = name;
     }
@@ -66,4 +65,7 @@ public class Category implements Serializable {
     public List<Category> getCategories() {return categories;}
     public void setCategories(List<Category> categories) {this.categories = categories;}
 
+    @JsonProperty
+    public String getLocation_code() {return location_code;}
+    public void setLocation_code(String location_code) {this.location_code = location_code;}
 }
