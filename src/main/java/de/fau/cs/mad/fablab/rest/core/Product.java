@@ -75,7 +75,6 @@ public class Product implements Serializable {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -84,7 +83,6 @@ public class Product implements Serializable {
     public String getProductId() {
         return productId;
     }
-
     public void setProductId(String id) {
         this.productId = id;
     }
@@ -93,7 +91,6 @@ public class Product implements Serializable {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -102,7 +99,6 @@ public class Product implements Serializable {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -111,7 +107,6 @@ public class Product implements Serializable {
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
@@ -120,7 +115,6 @@ public class Product implements Serializable {
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -129,7 +123,6 @@ public class Product implements Serializable {
     public int getItemsAvailable() {
         return itemsAvailable;
     }
-
     public void setItemsAvailable(int itemsAvailable) {
         this.itemsAvailable = itemsAvailable;
     }
@@ -138,7 +131,6 @@ public class Product implements Serializable {
     public long getCategoryId() {
         return categoryId;
     }
-
     public void setCategoryId(long id) {
         this.categoryId = id;
     }
@@ -147,15 +139,14 @@ public class Product implements Serializable {
     public String getCategoryString() {
         return categoryString;
     }
-
     public void setCategoryString(String cat) {
         this.categoryString = cat;
     }
 
+    @JsonProperty
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
