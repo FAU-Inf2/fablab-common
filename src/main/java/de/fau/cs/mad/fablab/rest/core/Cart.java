@@ -26,9 +26,6 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "cart_code")
-    private String cartCode;
-
     @DatabaseField(canBeNull = false)
     private CartStatus status;
 
@@ -37,14 +34,6 @@ public class Cart implements Serializable {
 
     public Cart() {
         status = CartStatus.SHOPPING;
-    }
-
-    public String getCartCode() {
-        return cartCode;
-    }
-
-    public void setCartCode(String cartCode) {
-        this.cartCode = cartCode;
     }
 
     public CartStatus getStatus() {
