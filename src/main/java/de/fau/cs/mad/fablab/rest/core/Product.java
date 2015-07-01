@@ -46,6 +46,11 @@ public class Product implements Serializable {
     @Column(name = "location")
     protected String location;
 
+    @Column(name = "location_id")
+    protected long location_id;
+
+    protected Location locationObject;
+
     protected Category mCategory;
 
     public Product() {
@@ -150,6 +155,14 @@ public class Product implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    @JsonProperty
+    public long getLocation_id(){return location_id;}
+    public void setLocation_id(long aLocationId){location_id = aLocationId;}
+
+    @JsonProperty
+    public Location getLocationObject() {return locationObject;}
+    public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
 
     public String toString() {
         return "Product : Name : " + this.getName() + " Price : " + this.getPrice() + " Category : " + this.categoryString + " Location : " + this.location;
