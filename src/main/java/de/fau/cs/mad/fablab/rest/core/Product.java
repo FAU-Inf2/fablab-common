@@ -49,8 +49,10 @@ public class Product implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
+    @Column(name = "location_object")
     protected Location locationObject;
 
+    @Column(name = "category")
     protected Category mCategory;
 
     public Product() {
