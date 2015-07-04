@@ -48,6 +48,9 @@ public class ICal implements Serializable {
 
     @Column(name = "description")
     private String description;
+	
+	@Column(name = "allday")
+    private boolean allday;
 
     @Transient
     private final SimpleDateFormat iCalDateToUtilDate=  new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
@@ -155,6 +158,14 @@ public class ICal implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+	
+	public boolean isAllday() {
+        return allday;
+    }
+
+    public void setAllday(boolean allday) {
+        this.allday = allday;
     }
 
 }
