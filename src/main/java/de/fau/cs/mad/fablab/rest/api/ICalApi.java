@@ -36,5 +36,5 @@ public interface ICalApi {
     @Path("/timestamp")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    long lastUpdate();
+    Long lastUpdate();
 }
