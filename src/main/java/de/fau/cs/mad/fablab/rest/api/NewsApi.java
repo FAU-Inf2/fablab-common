@@ -32,4 +32,10 @@ public interface NewsApi {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     List<News> findAll();
+
+    @GET
+    @Path("/timestamp")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    long lastUpdate();
 }

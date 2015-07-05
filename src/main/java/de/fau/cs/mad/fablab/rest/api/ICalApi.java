@@ -32,5 +32,9 @@ public interface ICalApi {
     @Produces(MediaType.APPLICATION_JSON)
     ICal findById(@PathParam("id")long id);
 
-
+    @GET
+    @Path("/timestamp")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    long lastUpdate();
 }
