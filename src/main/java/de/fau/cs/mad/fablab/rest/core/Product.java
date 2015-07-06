@@ -72,13 +72,10 @@ public class Product implements Serializable {
         locationObject = new Location();
     }
 
+    @JsonProperty
+    public Category getCategory() {return mCategory;}
     public void setCategory(Category aCategory) {
         mCategory = aCategory;
-    }
-
-    @JsonProperty
-    public Category getCategory() {
-        return mCategory;
     }
 
     @JsonProperty
