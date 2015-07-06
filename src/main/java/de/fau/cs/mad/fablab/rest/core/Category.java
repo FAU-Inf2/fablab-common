@@ -25,10 +25,11 @@ public class Category implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
+    @Transient
     protected List<Long> categories;
 
     public Category(){
-        // Default
+        categories = new ArrayList<>();
     }
 
     public Category(long aCategoryId, String aCategoryName,long location_id){
@@ -51,7 +52,8 @@ public class Category implements Serializable {
         this.name = name;}
 
     @JsonProperty
-    public List<Long> getCategories() {return categories;}
+    public List<Long> getCategories() {
+        return categories;}
     public void setCategories(List<Long> categories) {this.categories = categories;}
 
     @JsonProperty
