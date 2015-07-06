@@ -56,6 +56,8 @@ public class Product implements Serializable {
     protected Category mCategory;
 
     public Product() {
+        mCategory = new Category();
+        locationObject = new Location();
     }
 
     public Product(String productId, String name, double price, long categoryId, String categoryString, String unit, String location) {
@@ -67,6 +69,7 @@ public class Product implements Serializable {
         this.unit = unit;
         this.location = location;
         mCategory = new Category();
+        locationObject = new Location();
     }
 
     public void setCategory(Category aCategory) {
