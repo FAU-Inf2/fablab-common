@@ -31,6 +31,12 @@ public interface NewsApi {
     List<News> findAll();
 
     @GET
+    @Path("/all/{timestamp}")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    List<News> findNewsSince(@PathParam("timestamp")long timestamp);
+
+    @GET
     @Path("/timestamp")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
