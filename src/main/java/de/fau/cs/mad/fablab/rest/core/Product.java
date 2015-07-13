@@ -1,6 +1,8 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -46,9 +48,11 @@ public class Product implements Serializable {
     protected long location_id;
 
     @Column(name = "location_object")
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Location locationObject;
 
     @Column(name = "category")
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Category mCategory;
 
     public Product() {
