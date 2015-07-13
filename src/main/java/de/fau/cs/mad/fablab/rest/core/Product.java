@@ -15,10 +15,6 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-
     @Column(name = "product_id")
     protected String productId;
 
@@ -78,14 +74,6 @@ public class Product implements Serializable {
         mCategory = aCategory;
     }
 
-    @JsonProperty
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
     @JsonProperty
     public String getProductId() {
         return productId;
@@ -166,7 +154,14 @@ public class Product implements Serializable {
     public Location getLocationObject() {return locationObject;}
     public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
 
+    @Override
     public String toString() {
         return "Product : Name : " + this.getName() + " Price : " + this.getPrice() + " Category : " + this.categoryString + " Location : " + this.location;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return this == other || (other != null && getClass() == other.getClass()
+                && productId.equals(((Product) other).getProductId()));
     }
 }

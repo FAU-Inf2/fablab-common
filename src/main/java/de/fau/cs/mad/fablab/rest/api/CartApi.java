@@ -1,9 +1,8 @@
 package de.fau.cs.mad.fablab.rest.api;
 
 
-import de.fau.cs.mad.fablab.rest.core.Cart;
 import de.fau.cs.mad.fablab.rest.core.CartServer;
-import de.fau.cs.mad.fablab.rest.core.CartStatusEnum;
+import de.fau.cs.mad.fablab.rest.core.CartStatus;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -23,7 +22,7 @@ public interface CartApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/status/{id}")
-    CartStatusEnum getStatus(@PathParam("id") String id);
+    CartStatus getStatus(@PathParam("id") String id);
 
 
 }

@@ -1,57 +1,49 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
-import javax.persistence.*;
-import java.io.Serializable;
 import com.j256.ormlite.field.DatabaseField;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * This class represents an entry in a shopping cart, specifying how many products are in a cart
  */
 
 @Entity
-@Table(name = "cartEntry")
-public class CartEntry implements Serializable{
+@Table(name = "cart_entry")
+public class CartEntry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //@ManyToOne(fetch=FetchType.LAZY)
-    //private Cart cart;
-
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "cart_id")
+    @DatabaseField(foreign = true, canBeNull = false)
     private Cart cart;
 
-    //@ManyToOne
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true, columnName = "product_ref", canBeNull = false)
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, canBeNull = false)
     private Product product;
 
     @Column(name = "amount")
     private double amount;
 
     // required no-arg constructor for ORM lite
-    public CartEntry(){}
+    public CartEntry() {
+    }
 
-    public CartEntry(Product p, double amount){
-        this.product = p;
+    public CartEntry(Product product, double amount) {
+        this.product = product;
         this.amount = amount;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public Product getProduct() {
+        return product;
     }
 
     public double getAmount() {
@@ -62,17 +54,13 @@ public class CartEntry implements Serializable{
         this.amount = amount;
     }
 
-    public Product getProduct() {
-        return product;
+    public double getTotalPrice() {
+        return product.getPrice() * amount;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    @Override
+    public boolean equals(Object other) {
+        return this == other || (other != null && getClass() == other.getClass()
+                && id == ((CartEntry) other).id);
     }
-
-
-    public double getTotal() {
-        return amount * product.getPrice();
-    }
-
 }

@@ -18,7 +18,7 @@ public class CartServer implements Serializable {
     private List<CartEntryServer> items;
 
     @Column(name = "status")
-    private CartStatusEnum status;
+    private CartStatus status;
 
     @Column(name = "push_id")
     private String pushId;
@@ -29,7 +29,7 @@ public class CartServer implements Serializable {
 
     public CartServer() {}
 
-    public CartServer(String cartCode, List<CartEntryServer> items, CartStatusEnum status, String pushId) {
+    public CartServer(String cartCode, List<CartEntryServer> items, CartStatus status, String pushId) {
         this.cartCode = cartCode;
         this.items = items;
         this.status = status;
@@ -52,11 +52,11 @@ public class CartServer implements Serializable {
         this.items = items;
     }
 
-    public CartStatusEnum getStatus() {
+    public CartStatus getStatus() {
         return status;
     }
 
-    public void setStatus(CartStatusEnum status) {
+    public void setStatus(CartStatus status) {
         this.status = status;
     }
 
