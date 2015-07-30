@@ -13,5 +13,11 @@ public interface DataApi {
     @Path("/fablab-mail")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    String getMailAddress();
+    String getFabLabMailAddress();
+
+    @GET
+    @Path("/feedback-mail")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    String getFeedbackMailAddress();
 }
