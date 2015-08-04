@@ -25,7 +25,7 @@ public class Category implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
-    @Transient
+    @javax.persistence.Transient
     protected List<Long> categories;
 
     public Category(){
@@ -59,4 +59,14 @@ public class Category implements Serializable {
     @JsonProperty
     public long getLocation_id() {return location_id;}
     public void setLocation_id(long location_id) {this.location_id = location_id;}
+
+    @JsonProperty
+    public void addCategory(long aCategoryId){
+        categories.add(aCategoryId);
+    }
+
+    @Override
+    public String toString(){
+        return "Category: " + "id: " + String.valueOf(getCategoryId()) + " -Name: "+ getName() + " -LocationId: " + getLocation_id();
+    }
 }

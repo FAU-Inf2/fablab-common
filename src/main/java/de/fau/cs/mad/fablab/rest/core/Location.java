@@ -13,6 +13,9 @@ public class Location implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
 
+    @Column(name = "locationId")
+    protected long locationId;
+
     @Column(name = "name")
     protected String name;
 
@@ -44,6 +47,15 @@ public class Location implements Serializable{
     }
     public String getCode() {
         return code;
+    }
+
+    @JsonProperty
+    public void setLocationId(long aLocationId){locationId = aLocationId;}
+    public long getLocationId(){return locationId;}
+
+    @Override
+    public String toString(){
+        return "Location: " + "id: " + String.valueOf(getLocationId()) + " -Name: "+ getName() + " -Code: " + getCode();
     }
 
 

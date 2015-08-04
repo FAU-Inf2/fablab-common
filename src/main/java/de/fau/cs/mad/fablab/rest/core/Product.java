@@ -160,7 +160,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Product : Name : " + this.getName() + " Price : " + this.getPrice() + " Category : " + this.categoryString + " Location : " + this.location;
+        return "Product : "+ "id : " + this.productId + "  -Name : " + getName() + " -Price : " + getPrice() + " -Unit : " + this.unit + " -Category : " + this.categoryString + " -Location : " + this.location;
     }
 
     @Override
