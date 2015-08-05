@@ -55,9 +55,14 @@ public class Product implements Serializable {
     @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Category mCategory;
 
+    @Column(name = "UOM")
+    @DatabaseField(dataType  = DataType.SERIALIZABLE)
+    protected UOM mUom;
+
     public Product() {
         mCategory = new Category();
         locationObject = new Location();
+        mUom = new UOM();
     }
 
     public Product(String productId, String name, double price, long categoryId, String categoryString, String unit, String location) {
@@ -157,6 +162,10 @@ public class Product implements Serializable {
     @JsonProperty
     public Location getLocationObject() {return locationObject;}
     public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
+
+    @JsonProperty
+    public void setUom(UOM mUom) {this.mUom = mUom;}
+    public UOM getUom() {return mUom;}
 
     @Override
     public String toString() {
