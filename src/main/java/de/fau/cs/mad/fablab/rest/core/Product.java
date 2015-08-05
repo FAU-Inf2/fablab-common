@@ -29,6 +29,9 @@ public class Product implements Serializable {
     @Column(name = "unit")
     protected String unit;
 
+    @Column(name = "oum_id")
+    protected long oum_id;
+
     @Column(name = "category_id")
     protected long categoryId;
 
@@ -162,6 +165,10 @@ public class Product implements Serializable {
     @JsonProperty
     public Location getLocationObject() {return locationObject;}
     public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
+
+    @JsonProperty
+    public void setOum_id(long oum_id) {this.oum_id = oum_id;}
+    public long getOum_id() {return oum_id;}
 
     @JsonProperty
     public void setUom(UOM mUom) {this.mUom = mUom;}
