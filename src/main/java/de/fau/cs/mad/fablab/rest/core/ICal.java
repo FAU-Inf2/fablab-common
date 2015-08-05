@@ -72,6 +72,17 @@ public class ICal implements Serializable {
         this.dateAdded = dateAdded;
     }
 
+    public ICal(String uid, String summery, String start, String end, String url, String location, String description, boolean allday) {
+        this.uid = uid;
+        this.summery = summery;
+        this.start = start;
+        this.end = end;
+        this.url = url;
+        this.location = location;
+        this.description = description;
+        this.allday = allday;
+    }
+
     @JsonProperty
     public long getId() {
         return id;
