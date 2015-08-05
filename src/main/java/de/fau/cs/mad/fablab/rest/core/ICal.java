@@ -52,12 +52,15 @@ public class ICal implements Serializable {
     @Column(name = "allday")
     private boolean allday;
 
+    @Column(name = "dateAdded")
+    private Date dateAdded;
+
     @Transient
     private final SimpleDateFormat iCalDateToUtilDate=  new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
 
-    public ICal(){}
+    public ICal() {}
 
-    public ICal(String uid, String summery, String start, String end, String url, String location, String description, boolean allday) {
+    public ICal(String uid, String summery, String start, String end, String url, String location, String description, boolean allday, Date dateAdded) {
         this.uid = uid;
         this.summery = summery;
         this.start = start;
@@ -66,6 +69,7 @@ public class ICal implements Serializable {
         this.location = location;
         this.description = description;
         this.allday = allday;
+        this.dateAdded = dateAdded;
     }
 
     @JsonProperty
@@ -167,5 +171,17 @@ public class ICal implements Serializable {
 
     public void setAllday(boolean allday) {
         this.allday = allday;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
+    public SimpleDateFormat getiCalDateToUtilDate() {
+        return iCalDateToUtilDate;
     }
 }
