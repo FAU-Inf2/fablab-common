@@ -34,6 +34,9 @@ public class ICal implements Serializable {
     @Column(name = "summery", nullable = false)
     private String summery;
 
+    @Column(name = "dtstamp", nullable = false)
+    private String dtstamp;
+
     @Column(name = "start", nullable = false)
     private String start;
 
@@ -52,24 +55,21 @@ public class ICal implements Serializable {
     @Column(name = "allday")
     private boolean allday;
 
-    @Column(name = "dateAdded")
-    private Date dateAdded;
-
     @Transient
     private final SimpleDateFormat iCalDateToUtilDate=  new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
 
     public ICal() {}
 
-    public ICal(String uid, String summery, String start, String end, String url, String location, String description, boolean allday, Date dateAdded) {
+    public ICal(String uid, String summery, String dtstamp, String start, String end, String url, String location, String description, boolean allday) {
         this.uid = uid;
         this.summery = summery;
+        this.dtstamp = dtstamp;
         this.start = start;
         this.end = end;
         this.url = url;
         this.location = location;
         this.description = description;
         this.allday = allday;
-        this.dateAdded = dateAdded;
     }
 
     public ICal(String uid, String summery, String start, String end, String url, String location, String description, boolean allday) {
@@ -184,12 +184,12 @@ public class ICal implements Serializable {
         this.allday = allday;
     }
 
-    public Date getDateAdded() {
-        return dateAdded;
+    public String getDtstamp() {
+        return dtstamp;
     }
 
-    public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
+    public void setDtstamp(String dtstamp) {
+        this.dtstamp = dtstamp;
     }
 
     public SimpleDateFormat getiCalDateToUtilDate() {
