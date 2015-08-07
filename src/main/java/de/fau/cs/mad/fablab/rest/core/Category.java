@@ -25,17 +25,20 @@ public class Category implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
+    @Column(name = "parent_category_id")
+    protected long parent_category_id;
+
     @javax.persistence.Transient
-    protected List<Long> categories;
+    protected List<Long> child_categories;
 
     public Category(){
-        categories = new ArrayList<>();
+        child_categories = new ArrayList<>();
     }
 
     public Category(long aCategoryId, String aCategoryName,long location_id){
         categoryId = aCategoryId;
         name = aCategoryName;
-        categories = new ArrayList<>();
+        child_categories = new ArrayList<>();
     }
 
     @JsonProperty
@@ -52,9 +55,13 @@ public class Category implements Serializable {
         this.name = name;}
 
     @JsonProperty
+    public void setParent_category_id(long parent_category_id) {this.parent_category_id = parent_category_id;}
+    public long getParent_category_id() {return parent_category_id;}
+
+    @JsonProperty
     public List<Long> getCategories() {
-        return categories;}
-    public void setCategories(List<Long> categories) {this.categories = categories;}
+        return child_categories;}
+    public void setCategories(List<Long> categories) {this.child_categories = categories;}
 
     @JsonProperty
     public long getLocation_id() {return location_id;}
@@ -62,7 +69,7 @@ public class Category implements Serializable {
 
     @JsonProperty
     public void addCategory(long aCategoryId){
-        categories.add(aCategoryId);
+        child_categories.add(aCategoryId);
     }
 
     @Override
