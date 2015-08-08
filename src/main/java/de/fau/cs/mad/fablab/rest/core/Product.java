@@ -50,10 +50,6 @@ public class Product implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
-    @Column(name = "location_object")
-    @DatabaseField(dataType = DataType.SERIALIZABLE)
-    protected Location locationObject;
-
     @Column(name = "category")
     @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Category mCategory;
@@ -64,7 +60,6 @@ public class Product implements Serializable {
 
     public Product() {
         mCategory = new Category();
-        locationObject = new Location();
         mUom = new UOM();
     }
 
@@ -77,7 +72,6 @@ public class Product implements Serializable {
         this.unit = unit;
         this.location = location;
         mCategory = new Category();
-        locationObject = new Location();
     }
 
     @JsonProperty
@@ -127,14 +121,6 @@ public class Product implements Serializable {
     }
 
     @JsonProperty
-    public int getItemsAvailable() {
-        return itemsAvailable;
-    }
-    public void setItemsAvailable(int itemsAvailable) {
-        this.itemsAvailable = itemsAvailable;
-    }
-
-    @JsonProperty
     public long getCategoryId() {
         return categoryId;
     }
@@ -162,9 +148,6 @@ public class Product implements Serializable {
     public long getLocation_id(){return location_id;}
     public void setLocation_id(long aLocationId){location_id = aLocationId;}
 
-    @JsonProperty
-    public Location getLocationObject() {return locationObject;}
-    public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
 
     @JsonProperty
     public void setOum_id(long oum_id) {this.oum_id = oum_id;}
