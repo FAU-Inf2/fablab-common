@@ -2,6 +2,8 @@ package de.fau.cs.mad.fablab.rest.core;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,6 +26,13 @@ public class Category implements Serializable {
 
     @Column(name = "location_id")
     protected long location_id;
+
+    @Column(name = "location_string")
+    protected String locationString;
+
+    @Column(name = "location_object")
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    protected Location locationObject;
 
     @Column(name = "parent_category_id")
     protected long parent_category_id;
@@ -51,17 +60,23 @@ public class Category implements Serializable {
 
     @JsonProperty
     public String getName() {return name;}
-    public void setName(String name) {
-        this.name = name;}
+    public void setName(String name) {this.name = name;}
 
     @JsonProperty
     public void setParent_category_id(long parent_category_id) {this.parent_category_id = parent_category_id;}
     public long getParent_category_id() {return parent_category_id;}
 
     @JsonProperty
-    public List<Long> getCategories() {
-        return child_categories;}
+    public void setLocationString(String locationString) {this.locationString = locationString;}
+    public String getLocationString() {return locationString;}
+
+    @JsonProperty
+    public List<Long> getCategories() {return child_categories;}
     public void setCategories(List<Long> categories) {this.child_categories = categories;}
+
+    @JsonProperty
+    public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
+    public Location getLocationObject() {return locationObject;}
 
     @JsonProperty
     public long getLocation_id() {return location_id;}
@@ -74,6 +89,6 @@ public class Category implements Serializable {
 
     @Override
     public String toString(){
-        return "Category: " + "id: " + String.valueOf(getCategoryId()) + " -Name: "+ getName() + " -LocationId: " + getLocation_id();
+        return "Category: " + "id: " + String.valueOf(getCategoryId()) + " -Name: "+ getName() + " -LocationId: " + getLocation_id() + " -LocationString: " + getLocationString() + " -ParentId: " + getParent_category_id();
     }
 }
