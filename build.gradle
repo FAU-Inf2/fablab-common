@@ -30,6 +30,7 @@ dependencies {
     compile 'javax.ws.rs:javax.ws.rs-api:2.0'
     compile 'org.eclipse.persistence:javax.persistence:2.1.0'
     compile 'io.dropwizard:dropwizard-hibernate:' + dropwizardVersion
+    compile 'io.dropwizard:dropwizard-auth:' + dropwizardVersion
     compile 'com.j256.ormlite:ormlite-core:4.48'
 }
 
