@@ -10,8 +10,7 @@ import javax.ws.rs.core.Response;
 
 @Path("push")
 public interface PushApi {
-
-    @POST
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Response addRegistrationId(RegistrationId aRegistrationId);
