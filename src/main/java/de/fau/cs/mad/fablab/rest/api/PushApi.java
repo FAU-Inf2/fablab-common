@@ -16,7 +16,7 @@ public interface PushApi {
     @Produces(MediaType.APPLICATION_JSON)
     Response addRegistrationId(RegistrationId aRegistrationId);
 
-    @DELETE
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Response removeRegistrationId(RegistrationId aRegistrationId);
