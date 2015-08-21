@@ -1,6 +1,7 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name="inventory")
 public class InventoryItem {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -31,12 +33,12 @@ public class InventoryItem {
     @Column(name = "amount")
     private double amount;
 
+
     @Column(name = "updated_at")
     private DateTime updated_at;
 
     public InventoryItem(){
         this.updated_at = DateTime.now();
-
     }
 
     public InventoryItem(String userName, String UUID, String productName, String productId, double amount){
