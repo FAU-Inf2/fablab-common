@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="inventory")
 public class InventoryItem {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,12 +38,12 @@ public class InventoryItem {
     @Column(name = "amount")
     private double amount;
 
+
     @Column(name = "updated_at")
     private Date updated_at;
 
     public InventoryItem(){
         this.updated_at = new Date(System.currentTimeMillis());
-
     }
 
     public InventoryItem(String userName, String UUID, String productName, String productId, double amount){
