@@ -1,9 +1,14 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
-import org.joda.time.DateTime;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="inventory")
@@ -32,10 +37,10 @@ public class InventoryItem {
     private double amount;
 
     @Column(name = "updated_at")
-    private DateTime updated_at;
+    private Date updated_at;
 
     public InventoryItem(){
-        this.updated_at = DateTime.now();
+        this.updated_at = new Date(System.currentTimeMillis());
 
     }
 
@@ -45,7 +50,7 @@ public class InventoryItem {
         this.productId = productId;
         this.UUID = UUID;
         this.productName = productName;
-        this.updated_at = DateTime.now();
+        this.updated_at = new Date(System.currentTimeMillis());
     }
 
 
@@ -89,11 +94,11 @@ public class InventoryItem {
         this.amount = amount;
     }
 
-    public DateTime getUpdated_at() {
+    public Date getUpdated_at() {
         return updated_at;
     }
 
     public void setUpdated_at() {
-        this.updated_at = DateTime.now();
+        this.updated_at = new Date(System.currentTimeMillis());;
     }
 }
