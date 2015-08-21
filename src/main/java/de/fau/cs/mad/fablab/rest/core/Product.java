@@ -121,7 +121,7 @@ public class Product implements Serializable {
     public String getCategoryString() {return categoryString;}
     public void setCategoryString(String cat) {this.categoryString = cat;}
 
-    @JsonProperty("locationString")
+    @JsonProperty("location")
     public String getLocation() {return location;}
     public void setLocation(String location) {
         this.location = location;
