@@ -1,6 +1,7 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.fau.cs.mad.fablab.rest.api.DeviceType;
 
@@ -29,11 +30,11 @@ public class RegistrationId implements Serializable{
         deviceType = aDeviceType;
     }
 
-    @JsonProperty
+    @JsonIgnore
     public void setRegistrationid_id(long aRegistrationid_id) {registrationid_id = aRegistrationid_id;}
     public long getRegistrationid_id() {return registrationid_id;}
 
-    @JsonProperty
+    @JsonProperty("registrationId")
     public String getRegistrationid() {return registrationid;}
     public void setRegistrationid(String aRegistrationid) {registrationid = aRegistrationid;}
 

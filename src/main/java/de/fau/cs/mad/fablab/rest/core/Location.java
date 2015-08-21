@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Location implements Serializable{
     public Location(){
     }
 
-    @JsonProperty
+    @JsonIgnore
     public void setId(long id) {
         this.id = id;
     }
@@ -33,7 +34,12 @@ public class Location implements Serializable{
         return id;
     }
 
-    @JsonProperty
+
+    @JsonProperty("locationId")
+    public void setLocationId(long aLocationId){locationId = aLocationId;}
+    public long getLocationId(){return locationId;}
+
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -41,17 +47,9 @@ public class Location implements Serializable{
         return name;
     }
 
-    @JsonProperty
-    public void setCode(String code) {
-        this.code = code;
-    }
-    public String getCode() {
-        return code;
-    }
-
-    @JsonProperty
-    public void setLocationId(long aLocationId){locationId = aLocationId;}
-    public long getLocationId(){return locationId;}
+    @JsonProperty("code")
+    public void setCode(String code) {this.code = code;}
+    public String getCode() {return code;}
 
     @Override
     public String toString(){

@@ -1,6 +1,7 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
@@ -50,42 +51,44 @@ public class Category implements Serializable {
         child_categories = new ArrayList<>();
     }
 
-    @JsonProperty
-    public long getId() {return id;}
-    public void setId(long id) {this.id = id;}
 
-    @JsonProperty
+    @JsonProperty("categoryId")
     public long getCategoryId() {return categoryId;}
     public void setCategoryId(long categoryId) {this.categoryId = categoryId;}
 
-    @JsonProperty
+    @JsonProperty("name")
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
-    @JsonProperty
+    @JsonProperty("parentCategoryId")
     public void setParent_category_id(long parent_category_id) {this.parent_category_id = parent_category_id;}
     public long getParent_category_id() {return parent_category_id;}
 
-    @JsonProperty
+    @JsonProperty("locationString")
     public void setLocationString(String locationString) {this.locationString = locationString;}
     public String getLocationString() {return locationString;}
 
-    @JsonProperty
+    @JsonProperty("categoryChilds")
     public List<Long> getCategories() {return child_categories;}
     public void setCategories(List<Long> categories) {this.child_categories = categories;}
 
-    @JsonProperty
+    @JsonProperty("location")
     public void setLocationObject(Location locationObject) {this.locationObject = locationObject;}
     public Location getLocationObject() {return locationObject;}
 
-    @JsonProperty
-    public long getLocation_id() {return location_id;}
-    public void setLocation_id(long location_id) {this.location_id = location_id;}
 
     @JsonProperty
     public void addCategory(long aCategoryId){
         child_categories.add(aCategoryId);
     }
+
+    @JsonIgnore
+    public long getLocation_id() {return location_id;}
+    public void setLocation_id(long location_id) {this.location_id = location_id;}
+
+    @JsonIgnore
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     @Override
     public String toString(){

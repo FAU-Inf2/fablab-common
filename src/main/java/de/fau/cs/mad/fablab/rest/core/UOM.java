@@ -7,29 +7,29 @@ import java.io.Serializable;
 
 public class UOM implements Serializable {
 
-    private long uom_id;
+    private long mUomId;
 
-    private String name;
+    private String mName;
 
-    private double rounding;
+    private double mRounding;
 
-    private String uomType;
+    private String mUomType;
 
-    @JsonProperty
-    public void setUom_id(long uom_id) {this.uom_id = uom_id;}
-    public long getUom_id() {return uom_id;}
+    @JsonProperty("uomId")
+    public void setUom_id(long uom_id) {mUomId = uom_id;}
+    public long getUom_id() {return mUomId;}
 
-    @JsonProperty
-    public void setName(String name) {this.name = name;}
-    public String getName() {return name;}
+    @JsonProperty("name")
+    public void setName(String name) {mName = name;}
+    public String getName() {return mName;}
 
-    @JsonProperty
-    public void setRounding(double rounding) {this.rounding = rounding;}
-    public double getRounding() {return rounding;}
+    @JsonProperty("rounding")
+    public void setRounding(double rounding) {mRounding = rounding;}
+    public double getRounding() {return mRounding;}
 
-    @JsonProperty
-    public void setUomType(String uomType) {this.uomType = uomType;}
-    public String getUomType() {return uomType;}
+    @JsonProperty("uomType")
+    public void setUomType(String uomType) {mUomType = uomType;}
+    public String getUomType() {return mUomType;}
 
     @Override
     public String toString() {

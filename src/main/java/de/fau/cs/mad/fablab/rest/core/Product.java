@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
@@ -74,21 +75,17 @@ public class Product implements Serializable {
         mCategory = new Category();
     }
 
-    @JsonProperty
+    @JsonProperty("category")
     public Category getCategory() {return mCategory;}
-    public void setCategory(Category aCategory) {
-        mCategory = aCategory;
-    }
+    public void setCategory(Category aCategory) {mCategory = aCategory;}
 
-    @JsonProperty
-    public String getProductId() {
-        return productId;
-    }
+    @JsonProperty("productId")
+    public String getProductId() {return productId;}
     public void setProductId(String id) {
         this.productId = id;
     }
 
-    @JsonProperty
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -96,7 +93,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    @JsonProperty
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
@@ -104,7 +101,7 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    @JsonProperty
+    @JsonProperty("unit")
     public String getUnit() {
         return unit;
     }
@@ -112,7 +109,7 @@ public class Product implements Serializable {
         this.unit = unit;
     }
 
-    @JsonProperty
+    @JsonProperty("price")
     public double getPrice() {
         return price;
     }
@@ -120,7 +117,21 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    @JsonProperty
+    @JsonProperty("categoryString")
+    public String getCategoryString() {return categoryString;}
+    public void setCategoryString(String cat) {this.categoryString = cat;}
+
+    @JsonProperty("locationString")
+    public String getLocation() {return location;}
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @JsonProperty("uom")
+    public void setUom(UOM mUom) {this.mUom = mUom;}
+    public UOM getUom() {return mUom;}
+
+    @JsonIgnore
     public long getCategoryId() {
         return categoryId;
     }
@@ -128,34 +139,14 @@ public class Product implements Serializable {
         this.categoryId = id;
     }
 
-    @JsonProperty
-    public String getCategoryString() {
-        return categoryString;
-    }
-    public void setCategoryString(String cat) {
-        this.categoryString = cat;
-    }
-
-    @JsonProperty
-    public String getLocation() {
-        return location;
-    }
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    @JsonProperty
+    @JsonIgnore
     public long getLocation_id(){return location_id;}
     public void setLocation_id(long aLocationId){location_id = aLocationId;}
 
-
-    @JsonProperty
+    @JsonIgnore
     public void setOum_id(long oum_id) {this.oum_id = oum_id;}
     public long getOum_id() {return oum_id;}
 
-    @JsonProperty
-    public void setUom(UOM mUom) {this.mUom = mUom;}
-    public UOM getUom() {return mUom;}
 
     @Override
     public String toString() {
