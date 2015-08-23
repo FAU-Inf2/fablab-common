@@ -3,12 +3,13 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
@@ -20,24 +21,29 @@ public class User implements Serializable
 {
     @Column(name = "name")
 	private String username;
+    @Column(name = "password")
+    private String password;
     @Column(name = "roles")
     private List<Roles> roles;
 
     public User()
     {
         username = "";
-        roles = new ArrayList<>();
+        password = "";
+        roles = new ArrayList();
     }
 
-    public User (String name)
+    public User (String name, String password)
     {
         username = name;
-        roles = new ArrayList<>();
+        this.password = password;
+        roles = new ArrayList();
     }
 
-    public User (String name, ArrayList<Roles> roles)
+    public User (String name, String password, ArrayList<Roles> roles)
     {
         username = name;
+        this.password = password;
         this.roles = roles;
     }
 
@@ -55,6 +61,16 @@ public class User implements Serializable
     }
     public void setRoles(List<Roles> roles) {
         this.roles = roles;
+    }
+
+    @JsonProperty
+    public String getPassword()
+    {
+        return password;
+    }
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     boolean hasRole(Roles role) {
