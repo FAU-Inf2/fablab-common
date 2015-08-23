@@ -1,6 +1,10 @@
 package de.fau.cs.mad.fablab.rest.core;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Calendar;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,7 +53,7 @@ public class InventoryItem {
         this.productId = productId;
         this.UUID = UUID;
         this.productName = productName;
-        this.updated_at = new Date(System.currentTimeMillis());
+        this.updated_at = Calendar.getInstance().getTime();
     }
 
 
@@ -98,6 +102,6 @@ public class InventoryItem {
     }
 
     public void setUpdated_at() {
-        this.updated_at = new Date(System.currentTimeMillis());;
+        this.updated_at = Calendar.getInstance().getTime();
     }
 }
