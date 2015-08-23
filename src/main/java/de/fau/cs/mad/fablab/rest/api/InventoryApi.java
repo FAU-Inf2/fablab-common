@@ -11,6 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.fau.cs.mad.fablab.rest.core.InventoryItem;
+import de.fau.cs.mad.fablab.rest.core.User;
+import io.dropwizard.auth.Auth;
 
 @Path("inventory")
 public interface InventoryApi {
@@ -18,19 +20,16 @@ public interface InventoryApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/add")
-    InventoryItem add(InventoryItem obj);
+    InventoryItem add(@Auth User user, InventoryItem obj);
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/deleteAll")
-    Boolean deleteAll();
+    Boolean deleteAll(@Auth User user);
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/")
     List<InventoryItem> getAll();
 }
 
