@@ -48,6 +48,9 @@ public class Product implements Serializable {
     @Column(name = "location")
     protected String location;
 
+    @javax.persistence.Transient
+    protected String locationForProductMap;
+
     @Column(name = "location_id")
     protected long location_id;
 
@@ -130,6 +133,10 @@ public class Product implements Serializable {
     @JsonProperty("uom")
     public void setUom(UOM mUom) {this.mUom = mUom;}
     public UOM getUom() {return mUom;}
+
+    @JsonProperty("locationForProductMap")
+    public String getLocationForProductMap(){return this.locationForProductMap;}
+    public void setLocationForProductMap(String aLocationForProductMap){this.locationForProductMap = aLocationForProductMap;}
 
     @JsonIgnore
     public long getCategoryId() {
