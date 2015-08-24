@@ -18,14 +18,13 @@ public interface ContactApi {
 
     @POST
     @Path("/feedback")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response sendFeedback(String aMessage);
+    Response sendFeedback(@QueryParam("msg") String aMessage);
 
     @POST
     @Path("/error")
     @Produces(MediaType.APPLICATION_JSON)
-    Response sendErrorMessage(long aToolId);
+    Response sendErrorMessage(@QueryParam("id")long aToolId,@QueryParam("msg") String aMessage);
 
     @POST
     @Path("/test")
