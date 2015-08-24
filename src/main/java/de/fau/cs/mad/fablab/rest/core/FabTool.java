@@ -38,7 +38,7 @@ public class FabTool {
         this.linkToPicture = linkToPicture;
     }
 
-    @JsonProperty
+    @JsonProperty("id")
     public long getId() {
         return id;
     }
@@ -47,7 +47,7 @@ public class FabTool {
         this.id = id;
     }
 
-    @JsonProperty
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
@@ -56,7 +56,7 @@ public class FabTool {
         this.title = title;
     }
 
-    @JsonProperty
+    @JsonProperty("link")
     public String getLink() {
         return link;
     }
@@ -65,7 +65,7 @@ public class FabTool {
         this.link = link;
     }
 
-    @JsonProperty
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
@@ -74,7 +74,7 @@ public class FabTool {
         this.description = description;
     }
 
-    @JsonProperty
+    @JsonProperty("details")
     public String getDetails() {
         return details;
     }
@@ -83,7 +83,7 @@ public class FabTool {
         this.details = details;
     }
 
-    @JsonProperty
+    @JsonProperty("linkToPicture")
     public String getLinkToPicture() {
         return linkToPicture;
     }
