@@ -11,8 +11,8 @@ public class UpdateStatus {
         Required
     }
 
-    private String currentVersion;
-    private int currentVersionCode;
+    private String latestVersion;
+    private int latestVersionCode;
     private int oldVersionCode;
     private UpdateAvailability updateAvailable;
     private String updateMessage;
@@ -21,16 +21,16 @@ public class UpdateStatus {
 
     }
 
-    public String getCurrentVersion() {
-        return currentVersion;
+    public String getLatestVersion() {
+        return latestVersion;
     }
 
-    public void setCurrentVersion(String currentVersion) {
-        this.currentVersion = currentVersion;
+    public void setLatestVersion(String latestVersion) {
+        this.latestVersion = latestVersion;
     }
 
-    public int getCurrentVersionCode() {
-        return currentVersionCode;
+    public int getLatestVersionCode() {
+        return latestVersionCode;
     }
 
     public int getOldVersionCode() {
@@ -41,8 +41,8 @@ public class UpdateStatus {
         this.oldVersionCode = oldVersionCode;
     }
 
-    public void setCurrentVersionCode(int currentVersionCode) {
-        this.currentVersionCode = currentVersionCode;
+    public void setLatestVersionCode(int latestVersionCode) {
+        this.latestVersionCode = latestVersionCode;
     }
 
     public UpdateAvailability getUpdateAvailable() {
