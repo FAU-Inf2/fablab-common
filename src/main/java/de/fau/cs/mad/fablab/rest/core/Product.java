@@ -18,6 +18,10 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+
     @Column(name = "product_id")
     protected String productId;
 
@@ -54,7 +58,7 @@ public class Product implements Serializable {
     @Column(name = "location_id")
     protected long location_id;
 
-    @Column(name = "category")
+    @Column(name = "category", columnDefinition = "binary(4096)")
     @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Category mCategory;
 
