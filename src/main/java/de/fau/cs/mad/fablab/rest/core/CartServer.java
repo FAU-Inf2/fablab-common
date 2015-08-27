@@ -1,7 +1,5 @@
 package de.fau.cs.mad.fablab.rest.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -20,12 +18,16 @@ public class CartServer implements Serializable {
     @Column(name = "status")
     private CartStatus status;
 
-    @Column(name = "push_id")
-    private String pushId;
+    @Column(name = "push_token")
+    private String pushToken = "";
+
+    @Column(name = "platform_type")
+    private PlatformType platformType = PlatformType.UNSPECIFIED;
 
     //Only used to remove old carts (on server)
     @Column(name = "sentToServer")
     private long sentToServer;
+
 
     public CartServer() {}
 
@@ -33,7 +35,7 @@ public class CartServer implements Serializable {
         this.cartCode = cartCode;
         this.items = items;
         this.status = status;
-        this.pushId = pushId;
+        this.pushToken = pushId;
     }
 
     public String getCartCode() {
@@ -60,12 +62,20 @@ public class CartServer implements Serializable {
         this.status = status;
     }
 
-    public String getPushId() {
-        return pushId;
+    public String getPushToken() {
+        return pushToken;
     }
 
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
+    public void setPushToken(String pushToken) {
+        this.pushToken = pushToken;
+    }
+
+    public PlatformType getPlatformType() {
+        return platformType;
+    }
+
+    public void setPlatformType(PlatformType platformType) {
+        this.platformType = platformType;
     }
 
     public long getSentToServer() {
