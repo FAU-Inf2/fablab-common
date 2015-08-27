@@ -18,7 +18,7 @@ public interface PushApi {
     @Produces(MediaType.APPLICATION_JSON)
     Response subscribeDoorOpensNextTime(PushToken pushToken);
 
-    @DELETE
+    @POST
     @Path("/doorOpensNextTime")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
