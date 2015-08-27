@@ -23,6 +23,11 @@ public interface PushApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Response unsubscribeDoorOpensNextTime(PushToken pushToken);
+
+
+    @GET
+    @Path("/test")
+    Response test();
 }
 
 
