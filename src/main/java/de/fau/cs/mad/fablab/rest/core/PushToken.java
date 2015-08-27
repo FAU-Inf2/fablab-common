@@ -15,7 +15,7 @@ public class PushToken implements Serializable{
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "database_id")
-    private long DatabaseId;
+    private long databaseId;
 
     @Column(name = "token")
     private String token;
@@ -24,18 +24,18 @@ public class PushToken implements Serializable{
     private PlatformType platformType = PlatformType.UNSPECIFIED;
 
 
-    @JsonIgnore
+    //Hopefully nobody needs to add @JsonIgnore looks like Hibernate needs it too?!
     @Column(name = "trigger_push_type")
     private TriggerPushType triggerPushType;
 
     public PushToken(){}
 
     public long getDatabaseId() {
-        return DatabaseId;
+        return databaseId;
     }
 
     public void setDatabaseId(long databaseId) {
-        DatabaseId = databaseId;
+        databaseId = databaseId;
     }
 
     public String getToken() {
@@ -61,5 +61,15 @@ public class PushToken implements Serializable{
 
     public void setTriggerPushType(TriggerPushType triggerPushType) {
         this.triggerPushType = triggerPushType;
+    }
+
+    @Override
+    public String toString() {
+        return "PushToken{" +
+                "DatabaseId=" + databaseId +
+                ", token='" + token + '\'' +
+                ", platformType=" + platformType +
+                ", triggerPushType=" + triggerPushType +
+                '}';
     }
 }
