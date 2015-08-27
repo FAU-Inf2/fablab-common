@@ -1,12 +1,8 @@
 package de.fau.cs.mad.fablab.rest.api;
 
 
-import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Metered;
-import com.codahale.metrics.annotation.Timed;
 import de.fau.cs.mad.fablab.rest.core.CartServer;
-import de.fau.cs.mad.fablab.rest.core.Product;
-import de.fau.cs.mad.fablab.rest.core.RegistrationId;
 import de.fau.cs.mad.fablab.rest.core.TestObject;
 
 import javax.ws.rs.*;
