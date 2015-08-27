@@ -2,7 +2,7 @@ package de.fau.cs.mad.fablab.rest.api;
 
 
 
-import de.fau.cs.mad.fablab.rest.core.RegistrationId;
+import de.fau.cs.mad.fablab.rest.core.PushToken;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,15 +10,19 @@ import javax.ws.rs.core.Response;
 
 @Path("push")
 public interface PushApi {
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    Response addRegistrationId(RegistrationId aRegistrationId);
+
 
     @POST
+    @Path("/doorOpensNextTime")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response removeRegistrationId(RegistrationId aRegistrationId);
+    Response subscribeDoorOpensNextTime(PushToken pushToken);
+
+    @DELETE
+    @Path("/doorOpensNextTime")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    Response unsubscribeDoorOpensNextTime(PushToken pushToken);
 }
 
 
