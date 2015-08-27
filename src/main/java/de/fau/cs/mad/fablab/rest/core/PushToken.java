@@ -1,7 +1,7 @@
 package de.fau.cs.mad.fablab.rest.core;
 
 
-import de.fau.cs.mad.fablab.rest.api.PushType;
+import de.fau.cs.mad.fablab.rest.api.PlatformType;
 
 import java.io.Serializable;
 
@@ -12,11 +12,11 @@ public class PushToken implements Serializable{
 
     protected String token;
 
-    protected PushType deviceType = PushType.UNSPECIFIED;
+    protected PlatformType deviceType = PlatformType.UNSPECIFIED;
 
     public PushToken(){}
 
-    public PushToken(String token, PushType deviceType){
+    public PushToken(String token, PlatformType deviceType){
         this.token = token;
         this.deviceType = deviceType;
     }
@@ -29,11 +29,11 @@ public class PushToken implements Serializable{
         this.token = token;
     }
 
-    public PushType getDeviceType() {
+    public PlatformType getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(PushType deviceType) {
+    public void setDeviceType(PlatformType deviceType) {
         this.deviceType = deviceType;
     }
 }

@@ -16,5 +16,5 @@ public interface VersionCheckApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    UpdateStatus checkVersion(@QueryParam("deviceType") PushType deviceType, @QueryParam("currentVersion") int currentVersion);
+    UpdateStatus checkVersion(@QueryParam("deviceType") PlatformType deviceType, @QueryParam("currentVersion") int currentVersion);
 }
