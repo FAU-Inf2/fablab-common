@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.api;
 
+import de.fau.cs.mad.fablab.rest.core.PlatformType;
 import de.fau.cs.mad.fablab.rest.core.UpdateStatus;
 
 import javax.ws.rs.GET;
