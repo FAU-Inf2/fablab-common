@@ -12,14 +12,10 @@ public class PushToken implements Serializable{
 
     protected String token;
 
-    protected PlatformType deviceType = PlatformType.UNSPECIFIED;
+    protected PlatformType platformType = PlatformType.UNSPECIFIED;
 
     public PushToken(){}
 
-    public PushToken(String token, PlatformType deviceType){
-        this.token = token;
-        this.deviceType = deviceType;
-    }
 
     public String getToken() {
         return token;
@@ -29,11 +25,11 @@ public class PushToken implements Serializable{
         this.token = token;
     }
 
-    public PlatformType getDeviceType() {
-        return deviceType;
+    public PlatformType getPlatformType() {
+        return platformType;
     }
 
-    public void setDeviceType(PlatformType deviceType) {
-        this.deviceType = deviceType;
+    public void setPlatformType(PlatformType platformType) {
+        this.platformType = platformType;
     }
 }
