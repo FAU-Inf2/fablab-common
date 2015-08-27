@@ -18,8 +18,11 @@ import java.io.Serializable;
 public class Product implements Serializable {
 
     @Id
+    @Column(name="database_id")
+    @JsonIgnore
+    private Long databaseId;
+
     @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "product_id")
@@ -81,6 +84,9 @@ public class Product implements Serializable {
         this.location = location;
         mCategory = new Category();
     }
+
+    public Long getDatabaseId(){ return databaseId;}
+    public void setDatabaseId(Long databaseId){ this.databaseId = databaseId; }
 
     @JsonProperty("category")
     public Category getCategory() {return mCategory;}
