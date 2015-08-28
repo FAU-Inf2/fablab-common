@@ -55,7 +55,7 @@ public class Product implements Serializable {
     @Column(name = "location")
     protected String location;
 
-    @javax.persistence.Transient
+    @Column(name = "locationForProductMap")
     protected String locationForProductMap;
 
     @Column(name = "location_id")
