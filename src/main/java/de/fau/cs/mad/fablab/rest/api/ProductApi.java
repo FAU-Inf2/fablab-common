@@ -50,6 +50,4 @@ public interface ProductApi {
     @Produces(MediaType.APPLICATION_JSON)
     List<String> getAutoCompletions();
 
-
-
 }
