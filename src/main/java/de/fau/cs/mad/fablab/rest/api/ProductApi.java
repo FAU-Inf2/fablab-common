@@ -44,4 +44,12 @@ public interface ProductApi {
     @Produces(MediaType.APPLICATION_JSON)
     List<String> findAllNames();
 
+    @GET
+    @Path("/autocompletions")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    List<String> getAutoCompletions();
+
+
+
 }

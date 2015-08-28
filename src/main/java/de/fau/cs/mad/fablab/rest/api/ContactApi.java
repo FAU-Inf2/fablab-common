@@ -14,28 +14,15 @@ public interface ContactApi {
 
     @POST
     @Path("/feedback")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Response sendFeedback(@QueryParam("msg") String aMessage);
 
     @POST
     @Path("/error")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     Response sendErrorMessage(@QueryParam("id")long aToolId,@QueryParam("msg") String aMessage);
 
-    @POST
-    @Path("/test")
-    @Metered
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    TestObject create(final TestObject obj);
 
-    @GET
-    @Path("/cartserver")
-    @Produces(MediaType.APPLICATION_JSON)
-    CartServer getCartServer();
-
-    @GET
-    @Path("/test2")
-    @Produces(MediaType.APPLICATION_JSON)
-    TestObject getTestObject();
 }
