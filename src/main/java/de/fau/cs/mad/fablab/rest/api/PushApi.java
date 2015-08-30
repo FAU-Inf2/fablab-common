@@ -16,13 +16,16 @@ public interface PushApi {
     @Path("/doorOpensNextTime")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response subscribeDoorOpensNextTime(PushToken pushToken);
+    Boolean subscribeDoorOpensNextTime(PushToken pushToken);
 
+
+    //RETROFIT CANT DELETE WITH BODY -> This works like a DELETE !
     @PUT
     @Path("/doorOpensNextTime")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Response unsubscribeDoorOpensNextTime(PushToken pushToken);
+    Boolean unsubscribeDoorOpensNextTime(PushToken pushToken);
+
 
     @GET
     @Path("/doorOpensNextTime")
