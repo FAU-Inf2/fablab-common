@@ -30,6 +30,10 @@ public class PushToken implements Serializable{
 
     public PushToken(){}
 
+    public PushToken(String token){
+        this.token = token;
+    }
+
     public long getDatabaseId() {
         return databaseId;
     }

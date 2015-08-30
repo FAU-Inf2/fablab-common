@@ -24,6 +24,12 @@ public interface PushApi {
     @Produces(MediaType.APPLICATION_JSON)
     Response unsubscribeDoorOpensNextTime(PushToken pushToken);
 
+    @GET
+    @Path("/doorOpensNextTime")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    Boolean doorOpensNextTimeIsSetForToken(@QueryParam("token") String token);
+
 
     @GET
     @Path("/test")
