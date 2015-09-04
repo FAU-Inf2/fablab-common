@@ -2,14 +2,16 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="FabTool")
 public class FabTool {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "title", nullable = false)
@@ -18,10 +20,10 @@ public class FabTool {
     @Column(name = "link")
     private String link;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "details")
+    @Column(name = "details", columnDefinition = "TEXT")
     private String details;
 
     @Column(name = "linkToPicture")
