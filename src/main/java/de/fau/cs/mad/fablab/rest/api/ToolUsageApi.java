@@ -37,4 +37,11 @@ public interface ToolUsageApi {
     @Path("/{toolId}")
     @Produces(MediaType.APPLICATION_JSON)
     Response removeUsagesForTool(@PathParam("toolId") long toolId);
+
+    @POST
+    @Path("/{toolId}/{usageId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response moveAfter(@PathParam("toolId") long toolId, @PathParam("usageId") long usageId, @QueryParam("afterId") long afterId);
+
+
 }
