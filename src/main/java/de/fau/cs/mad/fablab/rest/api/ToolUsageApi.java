@@ -1,6 +1,8 @@
 package de.fau.cs.mad.fablab.rest.api;
 
 import de.fau.cs.mad.fablab.rest.core.ToolUsage;
+import de.fau.cs.mad.fablab.rest.core.User;
+import io.dropwizard.auth.Auth;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,22 +28,22 @@ public interface ToolUsageApi {
     @PUT
     @Path("/{toolId}")
     @Produces(MediaType.APPLICATION_JSON)
-    ToolUsage addUsage(@PathParam("toolId") long toolId, ToolUsage usage);
+    ToolUsage addUsage(@Auth(required = false) User user, @QueryParam("token") String token, @PathParam("toolId") long toolId, ToolUsage usage);
 
     @DELETE
     @Path("/{toolId}/{usageId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response removeUsage(@PathParam("toolId") long toolId, @PathParam("usageId") long usageId);
+    Response removeUsage(@Auth(required = false) User user, @QueryParam("token") String token, @PathParam("toolId") long toolId, @PathParam("usageId") long usageId);
 
     @DELETE
     @Path("/{toolId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response removeUsagesForTool(@PathParam("toolId") long toolId);
+    Response removeUsagesForTool(@Auth User user, @PathParam("toolId") long toolId);
 
     @POST
     @Path("/{toolId}/{usageId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response moveAfter(@PathParam("toolId") long toolId, @PathParam("usageId") long usageId, @QueryParam("afterId") long afterId);
+    Response moveAfter(User user, @PathParam("toolId") long toolId, @PathParam("usageId") long usageId, @QueryParam("afterId") long afterId);
 
 
 }

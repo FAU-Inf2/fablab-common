@@ -18,7 +18,7 @@ public class ToolUsage {
 
     @OneToOne
     @JsonIgnore
-    private ToolUsage successor;
+    private ToolUsage successor = null;
 
     @Transient
     @JsonProperty
@@ -34,6 +34,13 @@ public class ToolUsage {
 
     @Column(name = "user")
     private String user;
+
+    @Column(name = "project")
+    private String project;
+
+    @JsonIgnore
+    @Column(name = "token")
+    private String token;
 
     @Column(name = "duration")
     private long duration;
@@ -108,5 +115,21 @@ public class ToolUsage {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

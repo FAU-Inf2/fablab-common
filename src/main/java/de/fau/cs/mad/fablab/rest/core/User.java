@@ -3,13 +3,12 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -73,7 +72,7 @@ public class User implements Serializable
         this.password = password;
     }
 
-    boolean hasRole(Roles role) {
+    public boolean hasRole(Roles role) {
         return roles.contains(role);
     }
 
