@@ -21,7 +21,6 @@ public class ToolUsage {
     private ToolUsage successor = null;
 
     @Transient
-    @JsonProperty
     private long successorId = -1;
 
     @ManyToOne
@@ -45,26 +44,82 @@ public class ToolUsage {
     @Column(name = "duration")
     private long duration;
 
+    @Column(name = "creationTime")
+    @JsonProperty("creationTime")
+    private long creationTime;
+
+    @JsonProperty("creationtime")
+    public void setCreationTime(long creationTime) {this.creationTime = creationTime;}
+    public long getCreationTime() {return creationTime;}
+
+    @JsonProperty("duration")
     public long getDuration() {
         return duration;
     }
-
     public void setDuration(long duration) {
         this.duration = duration;
     }
 
+    @JsonProperty("id")
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
+
+
+
+    @JsonProperty("successorid")
+    public long getSuccessorId() {
+        if (successor == null)
+            return successorId;
+        return successor.getId();
+    }
+    public void setSuccessorId(long successorId) {
+        this.successorId = successorId;
+    }
+
+
+
+    @JsonProperty("toolid")
+    public void setToolId(long id) {toolId = id;}
+    public long getToolId() {
+        if (tool == null)
+            return toolId;
+
+        return tool.getId();
+    }
+
+    @JsonProperty("user")
+    public String getUser() {
+        return user;
+    }
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    @JsonProperty("project")
+    public String getProject() {
+        return project;
+    }
+    public void setProject(String project) {
+        this.project = project;
+    }
+
+    @JsonProperty("token")
+    public String getToken() {
+        return token;
+    }
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+
     public ToolUsage getSuccessor() {
         return successor;
     }
-
     public void setSuccessor(ToolUsage successor) {
         this.successor = successor;
 
@@ -74,32 +129,9 @@ public class ToolUsage {
             this.successorId = successor.getId();
     }
 
-    public long getSuccessorId() {
-        if (successor == null)
-            return successorId;
-
-        return successor.getId();
-    }
-
-    public void setSuccessorId(long successorId) {
-        this.successorId = successorId;
-    }
-
     public FabTool getTool() {
         return tool;
     }
-
-    public long getToolId() {
-        if (tool == null)
-            return toolId;
-
-        return tool.getId();
-    }
-
-    public void setToolId(long id) {
-        toolId = id;
-    }
-
     public void setTool(FabTool tool) {
         this.tool = tool;
 
@@ -107,29 +139,5 @@ public class ToolUsage {
             this.toolId = -1;
         else
             this.toolId = tool.getId();
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getProject() {
-        return project;
-    }
-
-    public void setProject(String project) {
-        this.project = project;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 }

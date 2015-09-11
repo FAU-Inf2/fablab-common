@@ -28,22 +28,30 @@ public interface ToolUsageApi {
     @PUT
     @Path("/{toolId}")
     @Produces(MediaType.APPLICATION_JSON)
-    ToolUsage addUsage(@Auth(required = false) User user, @QueryParam("token") String token, @PathParam("toolId") long toolId, ToolUsage usage);
+    ToolUsage addUsage(@Auth(required = false) User user,
+                       @QueryParam("token") String token,
+                       @PathParam("toolId") long toolId, ToolUsage usage);
 
     @DELETE
     @Path("/{toolId}/{usageId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response removeUsage(@Auth(required = false) User user, @QueryParam("token") String token, @PathParam("toolId") long toolId, @PathParam("usageId") long usageId);
+    Response removeUsage(@Auth(required = false) User user,
+                         @QueryParam("token") String token,
+                         @PathParam("toolId") long toolId,
+                         @PathParam("usageId") long usageId);
 
     @DELETE
     @Path("/{toolId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response removeUsagesForTool(@Auth User user, @PathParam("toolId") long toolId);
+    Response removeUsagesForTool(@Auth User user,
+                                 @PathParam("toolId") long toolId);
 
     @POST
     @Path("/{toolId}/{usageId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response moveAfter(User user, @PathParam("toolId") long toolId, @PathParam("usageId") long usageId, @QueryParam("afterId") long afterId);
+    Response moveAfter(User user, @PathParam("toolId") long toolId,
+                       @PathParam("usageId") long usageId,
+                       @QueryParam("afterId") long afterId);
 
 
 }
