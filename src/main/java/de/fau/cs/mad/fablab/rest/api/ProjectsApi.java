@@ -1,6 +1,5 @@
 package de.fau.cs.mad.fablab.rest.api;
 
-import de.fau.cs.mad.fablab.rest.core.CartServer;
 import de.fau.cs.mad.fablab.rest.core.ProjectFile;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +14,6 @@ public interface ProjectsApi {
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
-    //@Produces(MediaType.APPLICATION_JSON)
-    void createProject(ProjectFile project);
+    @Produces(MediaType.TEXT_PLAIN)
+    String createProject(ProjectFile project);
 }
