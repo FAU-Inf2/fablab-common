@@ -45,7 +45,6 @@ public class ToolUsage {
     private long duration;
 
     @Column(name = "creationTime")
-    @JsonProperty("creationTime")
     private long creationTime;
 
     @JsonProperty("creationtime")
