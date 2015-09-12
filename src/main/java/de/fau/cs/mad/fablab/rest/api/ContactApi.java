@@ -1,10 +1,5 @@
 package de.fau.cs.mad.fablab.rest.api;
 
-
-import com.codahale.metrics.annotation.Metered;
-import de.fau.cs.mad.fablab.rest.core.CartServer;
-import de.fau.cs.mad.fablab.rest.core.TestObject;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
