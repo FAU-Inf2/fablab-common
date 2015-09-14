@@ -92,6 +92,6 @@ public class Category implements Serializable {
 
     @Override
     public String toString(){
-        return "Category: " + "id: " + String.valueOf(getCategoryId()) + " -Name: "+ getName() + " -LocationId: " + getLocation_id() + " -LocationString: " + getLocationString() + " -ParentId: " + getParent_category_id();
+        return getName();
     }
 }
