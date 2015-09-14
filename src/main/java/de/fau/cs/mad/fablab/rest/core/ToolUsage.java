@@ -47,7 +47,7 @@ public class ToolUsage {
     @Column(name = "creationTime")
     private long creationTime;
 
-    @JsonProperty("creationtime")
+    @JsonProperty("creationTime")
     public void setCreationTime(long creationTime) {this.creationTime = creationTime;}
     public long getCreationTime() {return creationTime;}
 
@@ -67,9 +67,6 @@ public class ToolUsage {
         this.id = id;
     }
 
-
-
-
     @JsonProperty("successorid")
     public long getSuccessorId() {
         if (successor == null)
@@ -82,7 +79,7 @@ public class ToolUsage {
 
 
 
-    @JsonProperty("toolid")
+    @JsonProperty("toolId")
     public void setToolId(long id) {toolId = id;}
     public long getToolId() {
         if (tool == null)
@@ -138,5 +135,10 @@ public class ToolUsage {
             this.toolId = -1;
         else
             this.toolId = tool.getId();
+    }
+
+    @Override
+    public String toString() {
+        return "User: " + getUser() + " Project: " + getProject() + " CreationTime: " + getCreationTime();
     }
 }

@@ -27,6 +27,7 @@ public interface ToolUsageApi {
 
     @PUT
     @Path("/{toolId}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     ToolUsage addUsage(@Auth(required = false) User user,
                        @QueryParam("token") String token,
