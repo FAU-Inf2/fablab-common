@@ -52,6 +52,9 @@ public class Product implements Serializable {
     @Column(name = "available")
     protected int itemsAvailable;
 
+    @Column(name = "saleable")
+    protected boolean saleable;
+
     @Column(name = "location")
     protected String location;
 
@@ -113,6 +116,11 @@ public class Product implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @JsonProperty("saleable")
+    public void setSaleable(boolean saleable) {this.saleable = saleable;}
+    public boolean getSaleable() {return saleable;}
+    public boolean isSaleable(){return saleable;}
 
     @JsonProperty("unit")
     public String getUnit() {

@@ -38,7 +38,8 @@ public class Category implements Serializable {
     @Column(name = "parent_category_id")
     protected long parent_category_id;
 
-    @javax.persistence.Transient
+    @ElementCollection
+    @Column(name = "category_childs")
     protected List<Long> child_categories;
 
     public Category(){
@@ -50,7 +51,6 @@ public class Category implements Serializable {
         name = aCategoryName;
         child_categories = new ArrayList<>();
     }
-
 
     @JsonProperty("categoryId")
     public long getCategoryId() {return categoryId;}

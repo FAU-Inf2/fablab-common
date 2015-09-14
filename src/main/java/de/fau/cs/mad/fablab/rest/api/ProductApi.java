@@ -39,6 +39,14 @@ public interface ProductApi {
                           @QueryParam("offset") int offset);
 
     @GET
+    @Path("/find/all/withoutfilter")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    List<Product> findAllWithoutFilters(@QueryParam("limit") int limit,
+                          @QueryParam("offset") int offset);
+
+
+    @GET
     @Path("/names")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
