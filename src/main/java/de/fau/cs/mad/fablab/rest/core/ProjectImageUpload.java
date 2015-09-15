@@ -49,34 +49,4 @@ public class ProjectImageUpload implements Serializable {
     public void setRepoId(String repoId) {
         this.repoId = repoId;
     }
-    /*
-    public ProjectImageUpload(String filename, String data, String repoId) {
-        this.filename = filename;
-        this.data = data;
-        this.repoId = repoId;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getRepoId() {
-        return repoId;
-    }
-
-    public void setRepoId(String repoId) {
-        this.repoId = repoId;
-    }*/
 }
