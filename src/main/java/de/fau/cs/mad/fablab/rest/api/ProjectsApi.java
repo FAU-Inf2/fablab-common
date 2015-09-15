@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.api;
 
+import de.fau.cs.mad.fablab.rest.core.ProjectImageUpload;
 import de.fau.cs.mad.fablab.rest.core.ProjectFile;
 
 import javax.ws.rs.Consumes;
@@ -16,4 +17,10 @@ public interface ProjectsApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     String createProject(ProjectFile project);
+
+    @POST
+    @Path("/image/upload")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    String uploadImage(ProjectImageUpload image);
 }
