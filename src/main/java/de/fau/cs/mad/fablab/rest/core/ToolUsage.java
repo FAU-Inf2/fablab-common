@@ -49,12 +49,14 @@ public class ToolUsage {
 
     @JsonProperty("creationTime")
     public void setCreationTime(long creationTime) {this.creationTime = creationTime;}
+
     public long getCreationTime() {return creationTime;}
 
     @JsonProperty("duration")
     public long getDuration() {
         return duration;
     }
+
     public void setDuration(long duration) {
         this.duration = duration;
     }
@@ -63,6 +65,7 @@ public class ToolUsage {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -73,14 +76,14 @@ public class ToolUsage {
             return successorId;
         return successor.getId();
     }
+
     public void setSuccessorId(long successorId) {
         this.successorId = successorId;
     }
 
-
-
     @JsonProperty("toolId")
     public void setToolId(long id) {toolId = id;}
+
     public long getToolId() {
         if (tool == null)
             return toolId;
@@ -92,6 +95,7 @@ public class ToolUsage {
     public String getUser() {
         return user;
     }
+
     public void setUser(String user) {
         this.user = user;
     }
@@ -100,22 +104,23 @@ public class ToolUsage {
     public String getProject() {
         return project;
     }
+
     public void setProject(String project) {
         this.project = project;
     }
 
-    @JsonProperty("token")
     public String getToken() {
         return token;
     }
+
     public void setToken(String token) {
         this.token = token;
     }
 
-
     public ToolUsage getSuccessor() {
         return successor;
     }
+
     public void setSuccessor(ToolUsage successor) {
         this.successor = successor;
 
@@ -128,6 +133,7 @@ public class ToolUsage {
     public FabTool getTool() {
         return tool;
     }
+
     public void setTool(FabTool tool) {
         this.tool = tool;
 
