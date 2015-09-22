@@ -50,7 +50,8 @@ public interface ToolUsageApi {
     @POST
     @Path("/{toolId}/{usageId}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response moveAfter(User user, @PathParam("toolId") long toolId,
+    @Consumes(MediaType.APPLICATION_JSON)
+    Response moveAfter(@Auth User user, @PathParam("toolId") long toolId,
                        @PathParam("usageId") long usageId,
                        @QueryParam("afterId") long afterId);
 
