@@ -44,13 +44,13 @@ public class ToolUsage {
     @Column(name = "duration")
     private long duration;
 
-    @Column(name = "creationTime")
-    private long creationTime;
+    @Column(name = "startTime")
+    private long startTime;
 
-    @JsonProperty("creationTime")
-    public void setCreationTime(long creationTime) {this.creationTime = creationTime;}
+    @JsonProperty("startTime")
+    public void setStartTime(long startTime) {this.startTime = startTime;}
 
-    public long getCreationTime() {return creationTime;}
+    public long getStartTime() {return startTime;}
 
     @JsonProperty("duration")
     public long getDuration() {
@@ -145,6 +145,6 @@ public class ToolUsage {
 
     @Override
     public String toString() {
-        return "User: " + getUser() + " Project: " + getProject() + " CreationTime: " + getCreationTime();
+        return "User: " + getUser() + " Project: " + getProject() + " CreationTime: " + getStartTime();
     }
 }
