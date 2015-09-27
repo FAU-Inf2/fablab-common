@@ -1,5 +1,6 @@
 package de.fau.cs.mad.fablab.rest.api;
 
+import de.fau.cs.mad.fablab.rest.core.FabTool;
 import de.fau.cs.mad.fablab.rest.core.ToolUsage;
 import de.fau.cs.mad.fablab.rest.core.User;
 import io.dropwizard.auth.Auth;
@@ -56,4 +57,14 @@ public interface ToolUsageApi {
                        @QueryParam("afterId") long afterId);
 
 
+    @GET
+    @Path("/tools/")
+    @Produces(MediaType.APPLICATION_JSON)
+    List<FabTool> getEnabledTools();
+
+    @POST
+    @Path("/tools/{toolId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    Response setToolEnabled(@Auth User user, @PathParam("toolId") long toolId, @QueryParam("enable") boolean enable);
 }

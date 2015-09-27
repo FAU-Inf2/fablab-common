@@ -29,6 +29,9 @@ public class FabTool {
     @Column(name = "linkToPicture")
     private String linkToPicture;
 
+    @Column(name = "enabledForMachineUsage")
+    private boolean enabledForMachineUsage = false;
+
     public FabTool() {
     }
 
@@ -92,5 +95,14 @@ public class FabTool {
 
     public void setLinkToPicture(String linkToPicture) {
         this.linkToPicture = linkToPicture;
+    }
+
+    @JsonProperty("enabledForMachineUsage")
+    public boolean getEnabledForMachineUsage() {
+        return enabledForMachineUsage;
+    }
+
+    public void setEnabledForMachineUsage(boolean enabledForMachineUsage) {
+        this.enabledForMachineUsage = enabledForMachineUsage;
     }
 }
