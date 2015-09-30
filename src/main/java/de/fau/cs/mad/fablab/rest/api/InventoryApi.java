@@ -1,18 +1,13 @@
 package de.fau.cs.mad.fablab.rest.api;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import de.fau.cs.mad.fablab.rest.core.InventoryItem;
 import de.fau.cs.mad.fablab.rest.core.User;
 import io.dropwizard.auth.Auth;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("inventory")
 public interface InventoryApi {
@@ -31,5 +26,10 @@ public interface InventoryApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     List<InventoryItem> getAll();
+
+    @GET
+    @Path("inventory.csv")
+    @Produces("application/ms-excel")
+    Response csvExport();
 }
 

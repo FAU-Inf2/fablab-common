@@ -2,15 +2,9 @@ package de.fau.cs.mad.fablab.rest.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="inventory")
@@ -28,17 +22,14 @@ public class InventoryItem {
     @Column(name = "UUID")
     protected String UUID;
 
-
     @Column(name = "productId")
     protected String productId;
-
 
     @Column(name = "productName")
     protected String productName;
 
     @Column(name = "amount")
     private double amount;
-
 
     @Column(name = "updated_at")
     private Date updated_at;
@@ -55,7 +46,6 @@ public class InventoryItem {
         this.productName = productName;
         this.updated_at = Calendar.getInstance().getTime();
     }
-
 
     public String getUserName() {
         return userName;
