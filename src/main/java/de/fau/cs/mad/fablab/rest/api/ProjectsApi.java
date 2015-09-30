@@ -19,7 +19,18 @@ public interface ProjectsApi {
     @Path("/update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
+    @Deprecated
+    String updateProjectOld(@PathParam("id")String gistId, ProjectFile project);
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     String updateProject(@PathParam("id")String gistId, ProjectFile project);
+
+    @DELETE
+    @Path("/{id}")
+    void deleteProject(@PathParam("id")String gistId);
 
     @POST
     @Path("/image/upload")
